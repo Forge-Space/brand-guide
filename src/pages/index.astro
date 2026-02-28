@@ -1,14 +1,95 @@
 ---
-import "@/styles/global.css";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import identity from "../../brand/identity.json";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Siza Brand Guide</title>
-  </head>
-  <body class="bg-zinc-950 text-white min-h-screen flex items-center justify-center">
-    <h1 class="text-4xl font-bold">Siza Brand Guide</h1>
-  </body>
-</html>
+<BaseLayout title="Overview">
+  <header class="mb-16">
+    <div class="flex items-center gap-4 mb-6">
+      <img src="/logos/icon.svg" alt="" class="w-14 h-14" />
+      <div>
+        <h1 class="font-heading text-5xl font-bold">{identity.name}</h1>
+        <p class="text-text-secondary text-lg mt-1">{identity.tagline}</p>
+      </div>
+    </div>
+    <p class="text-text-muted text-sm max-w-xl leading-relaxed">
+      Brand identity guidelines, design tokens, and assets for the Siza platform.
+      This guide defines how Siza looks across web, desktop, and marketing materials.
+    </p>
+  </header>
+
+  <!-- Brand snapshot -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+    <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+      <h3 class="text-xs text-text-muted uppercase tracking-wider mb-4">Colors</h3>
+      <div class="flex gap-2">
+        <div class="w-10 h-10 rounded-lg" style={`background: ${identity.colors.primary.hex}`}></div>
+        <div class="w-10 h-10 rounded-lg" style={`background: ${identity.colors.secondary.hex}`}></div>
+        <div class="w-10 h-10 rounded-lg" style={`background: ${identity.colors.accent.hex}`}></div>
+      </div>
+      <p class="text-text-secondary text-sm mt-3">
+        {identity.colors.primary.hex} · {identity.colors.secondary.hex} · {identity.colors.accent.hex}
+      </p>
+    </div>
+
+    <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+      <h3 class="text-xs text-text-muted uppercase tracking-wider mb-4">Typography</h3>
+      <p class="font-heading text-2xl font-bold">{identity.typography.headingFont}</p>
+      <p class="text-text-secondary text-sm mt-1">
+        {identity.typography.bodyFont} · {identity.typography.monoFont}
+      </p>
+    </div>
+
+    <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+      <h3 class="text-xs text-text-muted uppercase tracking-wider mb-4">Style</h3>
+      <p class="text-2xl font-bold capitalize">{identity.style}</p>
+      <p class="text-text-secondary text-sm mt-1">{identity.industry}</p>
+    </div>
+  </section>
+
+  <!-- Sections -->
+  <section>
+    <h2 class="font-heading text-2xl font-bold mb-6">Sections</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {[
+        { href: "/logo/", title: "Logo", desc: "4 variants with usage guidelines" },
+        { href: "/colors/", title: "Colors", desc: "Full palette with WCAG contrast data" },
+        { href: "/typography/", title: "Typography", desc: "Type scale, fonts, and hierarchy" },
+        { href: "/tokens/", title: "Design Tokens", desc: "CSS, JSON, Tailwind, Sass, React exports" },
+        { href: "/assets/", title: "Assets", desc: "Logos, favicons, OG images to download" },
+        { href: "/usage/", title: "Usage", desc: "Do's, don'ts, and accessibility rules" },
+      ].map(({ href, title, desc }) => (
+        <a
+          href={href}
+          class="group bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-xl p-5 transition-all"
+        >
+          <h3 class="font-heading font-semibold group-hover:text-brand-accent transition-colors">{title}</h3>
+          <p class="text-text-muted text-sm mt-1">{desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Token formats -->
+  <section class="mt-16">
+    <h2 class="font-heading text-2xl font-bold mb-4">Download Tokens</h2>
+    <p class="text-text-muted text-sm mb-6">Use these design tokens to integrate Siza's brand into your project.</p>
+    <div class="flex flex-wrap gap-3">
+      {[
+        { href: "/downloads/tokens.json", label: "W3C JSON" },
+        { href: "/downloads/tailwind-preset.js", label: "Tailwind" },
+        { href: "/downloads/tokens.scss", label: "Sass" },
+        { href: "/downloads/theme.ts", label: "React" },
+      ].map(({ href, label }) => (
+        <a
+          href={href}
+          download
+          class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg px-4 py-2 text-sm transition-colors"
+        >
+          <span class="text-text-muted">↓</span>
+          {label}
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

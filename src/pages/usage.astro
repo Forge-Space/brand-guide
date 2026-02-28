@@ -1,0 +1,165 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import identity from "../../brand/identity.json";
+---
+
+<BaseLayout title="Usage Guidelines">
+  <header class="mb-12">
+    <h1 class="font-heading text-4xl font-bold mb-3">Usage Guidelines</h1>
+    <p class="text-text-secondary max-w-xl">
+      Rules and best practices for applying the Siza brand consistently
+      across all touchpoints.
+    </p>
+  </header>
+
+  <!-- Color usage -->
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold mb-6">Color Usage</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-xs text-green-400 uppercase tracking-wider mb-4">Do</h3>
+        <div class="space-y-3">
+          {[
+            "Use primary purple for CTAs and primary actions",
+            "Use secondary blue for supporting elements and links",
+            "Use accent magenta sparingly for highlights and badges",
+            "Use neutrals for backgrounds and body text",
+            "Maintain WCAG AA contrast ratios for all text",
+          ].map((rule) => (
+            <div class="flex items-start gap-3 bg-green-500/5 border border-green-500/10 rounded-lg p-3">
+              <span class="text-green-400 text-xs mt-0.5">✓</span>
+              <p class="text-sm text-text-secondary">{rule}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="text-xs text-red-400 uppercase tracking-wider mb-4">Don't</h3>
+        <div class="space-y-3">
+          {[
+            "Use accent as a background color for large areas",
+            "Mix brand colors with off-palette colors",
+            "Use primary purple for error states (use semantic error color)",
+            "Use text on backgrounds that don't meet AA contrast",
+            "Override semantic colors — success is always green, error is always red",
+          ].map((rule) => (
+            <div class="flex items-start gap-3 bg-red-500/5 border border-red-500/10 rounded-lg p-3">
+              <span class="text-red-400 text-xs mt-0.5">✕</span>
+              <p class="text-sm text-text-secondary">{rule}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography rules -->
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold mb-6">Typography Hierarchy</h2>
+    <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+      <div class="space-y-6">
+        {[
+          { level: "H1", font: "Outfit", weight: "Bold (700)", size: "text-4xl / text-5xl", use: "Page titles only. One per page." },
+          { level: "H2", font: "Outfit", weight: "Semibold (600)", size: "text-2xl / text-3xl", use: "Section headings. Primary content divisions." },
+          { level: "H3", font: "Outfit", weight: "Semibold (600)", size: "text-xl", use: "Subsection headings. Card titles." },
+          { level: "Body", font: "Inter", weight: "Regular (400)", size: "text-base", use: "Default body text. Paragraphs, descriptions." },
+          { level: "Small", font: "Inter", weight: "Regular (400)", size: "text-sm", use: "Secondary text, captions, metadata." },
+          { level: "Code", font: "JetBrains Mono", weight: "Regular (400)", size: "text-sm", use: "Code snippets, technical values, tokens." },
+        ].map(({ level, font, weight, size, use }) => (
+          <div class="flex items-start gap-6 border-b border-white/5 pb-4 last:border-0 last:pb-0">
+            <div class="w-16 shrink-0">
+              <span class="text-xs font-mono text-brand">{level}</span>
+            </div>
+            <div class="flex-1">
+              <p class="text-sm">{font} · {weight} · {size}</p>
+              <p class="text-xs text-text-muted mt-1">{use}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing rules -->
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold mb-6">Spacing</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+        <h3 class="text-sm font-medium mb-3">Component spacing</h3>
+        <div class="space-y-2 text-sm text-text-secondary">
+          <p>Padding inside cards: <code class="text-xs font-mono text-text-primary">spacing-6</code> (24px)</p>
+          <p>Gap between cards: <code class="text-xs font-mono text-text-primary">spacing-4</code> (16px)</p>
+          <p>Section margin: <code class="text-xs font-mono text-text-primary">spacing-12</code> (48px) or <code class="text-xs font-mono text-text-primary">spacing-16</code> (64px)</p>
+          <p>Inline element gap: <code class="text-xs font-mono text-text-primary">spacing-2</code> (8px)</p>
+        </div>
+      </div>
+      <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+        <h3 class="text-sm font-medium mb-3">Layout grid</h3>
+        <div class="space-y-2 text-sm text-text-secondary">
+          <p>Max content width: <code class="text-xs font-mono text-text-primary">64rem</code> (1024px)</p>
+          <p>Page padding: <code class="text-xs font-mono text-text-primary">spacing-8</code> to <code class="text-xs font-mono text-text-primary">spacing-16</code></p>
+          <p>Sidebar width: <code class="text-xs font-mono text-text-primary">16rem</code> (256px)</p>
+          <p>Base unit: <code class="text-xs font-mono text-text-primary">4px</code></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessibility -->
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold mb-6">Accessibility</h2>
+    <div class="space-y-3">
+      {[
+        { rule: "All text must meet WCAG AA contrast (4.5:1 normal text, 3:1 large text)", level: "Required" },
+        { rule: "Interactive elements must have visible focus indicators using brand colors", level: "Required" },
+        { rule: "Never use color alone to convey meaning — pair with icons or text", level: "Required" },
+        { rule: "Prefer WCAG AAA contrast (7:1) where possible", level: "Recommended" },
+        { rule: "Motion should respect prefers-reduced-motion media query", level: "Required" },
+        { rule: "Minimum touch target: 44×44px for mobile, 24×24px for desktop", level: "Required" },
+      ].map(({ rule, level }) => (
+        <div class="flex items-start gap-4 bg-white/[0.03] rounded-lg p-4 border border-white/5">
+          <span class:list={[
+            "text-[10px] font-mono uppercase px-2 py-0.5 rounded shrink-0",
+            level === "Required" ? "bg-brand/20 text-brand-accent" : "bg-white/10 text-text-muted",
+          ]}>
+            {level}
+          </span>
+          <p class="text-sm text-text-secondary">{rule}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Dark mode -->
+  <section>
+    <h2 class="font-heading text-2xl font-bold mb-6">Dark-First Design</h2>
+    <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+      <p class="text-sm text-text-secondary mb-4">
+        Siza is a dark-first product. The primary UI is always dark mode. Light mode support
+        exists for documentation and marketing materials.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-surface-1 rounded-lg p-4 border border-white/5">
+          <p class="text-xs text-text-muted mb-2">Dark (Primary)</p>
+          <div class="flex gap-2">
+            <div class="w-8 h-8 rounded" style="background: #0c0b0e"></div>
+            <div class="w-8 h-8 rounded" style="background: #15131a"></div>
+            <div class="w-8 h-8 rounded" style="background: #1f1c26"></div>
+            <div class="w-8 h-8 rounded" style="background: #2a2733"></div>
+            <div class="w-8 h-8 rounded" style="background: #363240"></div>
+          </div>
+          <code class="text-[10px] font-mono text-text-muted mt-2 block">surface-0 → surface-4</code>
+        </div>
+        <div class="bg-white rounded-lg p-4">
+          <p class="text-xs text-gray-500 mb-2">Light (Secondary)</p>
+          <div class="flex gap-2">
+            <div class="w-8 h-8 rounded border border-gray-200" style={`background: ${identity.colors.neutral[0].hex}`}></div>
+            <div class="w-8 h-8 rounded border border-gray-200" style={`background: ${identity.colors.neutral[1].hex}`}></div>
+            <div class="w-8 h-8 rounded border border-gray-200" style={`background: ${identity.colors.neutral[2].hex}`}></div>
+          </div>
+          <code class="text-[10px] font-mono text-gray-400 mt-2 block">neutral-100 → neutral-300</code>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

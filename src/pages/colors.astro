@@ -1,0 +1,150 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import identity from "../../brand/identity.json";
+
+const { primary, secondary, accent, neutral, semantic, contrast } = identity.colors;
+
+const brandColors = [
+  { ...primary, role: "Primary" },
+  { ...secondary, role: "Secondary" },
+  { ...accent, role: "Accent" },
+];
+
+const semanticColors = [
+  { ...semantic.success, role: "Success" },
+  { ...semantic.warning, role: "Warning" },
+  { ...semantic.error, role: "Error" },
+  { ...semantic.info, role: "Info" },
+];
+---
+
+<BaseLayout title="Colors">
+  <header class="mb-12">
+    <h1 class="font-heading text-4xl font-bold mb-3">Colors</h1>
+    <p class="text-text-secondary max-w-xl">
+      Siza's color system is built on a purple-dominant analogous palette.
+      All color combinations have been validated for WCAG accessibility.
+    </p>
+  </header>
+
+  <!-- Brand colors -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Brand Colors</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {brandColors.map((color) => (
+        <div>
+          <div
+            class="h-32 rounded-xl mb-3"
+            style={`background: ${color.hex}`}
+          />
+          <div class="flex items-baseline justify-between">
+            <div>
+              <p class="font-medium text-sm">{color.role}</p>
+              <p class="text-text-muted text-xs">{color.usage}</p>
+            </div>
+            <code class="text-xs font-mono text-text-muted">{color.hex}</code>
+          </div>
+          <div class="mt-2 text-[11px] text-text-muted font-mono">
+            HSL({color.hsl.h}, {color.hsl.s}%, {color.hsl.l}%)
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Neutral scale -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Neutral Scale</h2>
+    <div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+      {neutral.map((shade: any) => (
+        <div>
+          <div
+            class="aspect-square rounded-lg mb-2"
+            style={`background: ${shade.hex}`}
+          />
+          <p class="text-[10px] font-mono text-text-muted text-center">{shade.name.replace("neutral-", "")}</p>
+          <p class="text-[10px] font-mono text-text-muted text-center">{shade.hex}</p>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-text-muted mt-4">
+      Neutrals are brand-tinted with a subtle purple undertone (hue 262).
+    </p>
+  </section>
+
+  <!-- Semantic colors -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Semantic Colors</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {semanticColors.map((color) => (
+        <div class="flex items-center gap-3 bg-white/5 rounded-lg p-4">
+          <div
+            class="w-8 h-8 rounded-md shrink-0"
+            style={`background: ${color.hex}`}
+          />
+          <div>
+            <p class="text-sm font-medium">{color.role}</p>
+            <code class="text-[11px] font-mono text-text-muted">{color.hex}</code>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contrast matrix -->
+  {contrast && Object.keys(contrast).length > 0 && (
+    <section class="mb-16">
+      <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">WCAG Contrast</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10">
+              <th class="text-left py-2 pr-4 text-text-muted font-normal text-xs">Pair</th>
+              <th class="text-center py-2 px-3 text-text-muted font-normal text-xs">Ratio</th>
+              <th class="text-center py-2 px-3 text-text-muted font-normal text-xs">AA</th>
+              <th class="text-center py-2 px-3 text-text-muted font-normal text-xs">AA Large</th>
+              <th class="text-center py-2 px-3 text-text-muted font-normal text-xs">AAA</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(contrast).map(([pair, data]: [string, any]) => (
+              <tr class="border-b border-white/5">
+                <td class="py-2 pr-4 font-mono text-xs">{pair}</td>
+                <td class="text-center py-2 px-3 font-mono text-xs">{data.ratio.toFixed(2)}</td>
+                <td class="text-center py-2 px-3">
+                  <span class={data.aa ? "text-green-400" : "text-red-400"}>
+                    {data.aa ? "✓" : "✕"}
+                  </span>
+                </td>
+                <td class="text-center py-2 px-3">
+                  <span class={data.aaLarge ? "text-green-400" : "text-red-400"}>
+                    {data.aaLarge ? "✓" : "✕"}
+                  </span>
+                </td>
+                <td class="text-center py-2 px-3">
+                  <span class={data.aaa ? "text-green-400" : "text-red-400"}>
+                    {data.aaa ? "✓" : "✕"}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <!-- CSS usage -->
+  <section>
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Usage</h2>
+    <div class="bg-surface-2 rounded-xl p-6 border border-white/5">
+      <pre class="text-sm font-mono text-text-secondary overflow-x-auto"><code>{`/* CSS Custom Properties */
+color: var(--color-primary);       /* ${primary.hex} */
+color: var(--color-secondary);     /* ${secondary.hex} */
+color: var(--color-accent);        /* ${accent.hex} */
+color: var(--color-neutral-400);   /* ${neutral[3].hex} */
+color: var(--color-success);       /* ${semantic.success.hex} */
+color: var(--color-error);         /* ${semantic.error.hex} */`}</code></pre>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,103 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+const logosDir = join(process.cwd(), "public", "logos");
+const variants = ["wordmark", "monogram", "abstract", "icon"] as const;
+const logos = Object.fromEntries(
+  variants.map((v) => [v, readFileSync(join(logosDir, `${v}.svg`), "utf-8")])
+);
+---
+
+<BaseLayout title="Logo">
+  <header class="mb-12">
+    <h1 class="font-heading text-4xl font-bold mb-3">Logo</h1>
+    <p class="text-text-secondary max-w-xl">
+      The Siza logo comes in 4 variants. Use the wordmark as the primary logo,
+      and the icon for compact spaces like favicons and app icons.
+    </p>
+  </header>
+
+  <!-- Logo variants -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Variants</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {variants.map((variant) => (
+        <div class="group">
+          <!-- Dark background -->
+          <div class="bg-surface-2 rounded-xl p-10 flex items-center justify-center min-h-[180px] border border-white/5">
+            <div class="max-w-[200px]" set:html={logos[variant]} />
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <div>
+              <p class="text-sm font-medium capitalize">{variant}</p>
+              <p class="text-xs text-text-muted">
+                {variant === "wordmark" && "Primary — use as default"}
+                {variant === "monogram" && "Compact — social profiles, small spaces"}
+                {variant === "abstract" && "Decorative — backgrounds, patterns"}
+                {variant === "icon" && "Minimal — favicons, app icons"}
+              </p>
+            </div>
+            <a
+              href={`/logos/${variant}.svg`}
+              download
+              class="text-xs text-text-muted hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-md transition-colors"
+            >
+              SVG ↓
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Light background variants -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">On Light Backgrounds</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {variants.map((variant) => (
+        <div class="bg-white rounded-xl p-8 flex items-center justify-center min-h-[120px]">
+          <div class="max-w-[140px] [&_svg]:!fill-current [&_text]:!fill-[#1a1a2e]" set:html={logos[variant]} />
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-text-muted mt-3">
+      On light backgrounds, ensure sufficient contrast. Prefer the primary color (#7c3aed) version.
+    </p>
+  </section>
+
+  <!-- Clear space -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Clear Space</h2>
+    <div class="bg-surface-2 rounded-xl p-10 border border-white/5">
+      <div class="border-2 border-dashed border-brand/30 p-8 inline-flex rounded-lg">
+        <div class="max-w-[200px]" set:html={logos.wordmark} />
+      </div>
+      <p class="text-sm text-text-muted mt-4">
+        Maintain a minimum clear space equal to the height of the "S" around all sides of the logo.
+        Never place other elements within this zone.
+      </p>
+    </div>
+  </section>
+
+  <!-- Don'ts -->
+  <section>
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Don'ts</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {[
+        "Stretch or distort the logo",
+        "Add drop shadows or effects",
+        "Change the logo colors",
+        "Place on busy backgrounds",
+        "Rotate or skew the logo",
+        "Use at sizes below 24px",
+      ].map((rule) => (
+        <div class="bg-red-500/5 border border-red-500/10 rounded-lg p-4">
+          <span class="text-red-400 text-xs font-mono">✕</span>
+          <p class="text-sm text-text-secondary mt-1">{rule}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

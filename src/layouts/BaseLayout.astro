@@ -1,0 +1,109 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Siza brand identity guidelines, design tokens, and assets" } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const nav = [
+  { href: "/", label: "Overview", icon: "◆" },
+  { href: "/logo/", label: "Logo", icon: "◇" },
+  { href: "/colors/", label: "Colors", icon: "●" },
+  { href: "/typography/", label: "Typography", icon: "Aa" },
+  { href: "/tokens/", label: "Tokens", icon: "{ }" },
+  { href: "/assets/", label: "Assets", icon: "↓" },
+  { href: "/usage/", label: "Usage", icon: "✓" },
+];
+
+function isActive(href: string) {
+  if (href === "/") return currentPath === "/" || currentPath === "/index.html";
+  return currentPath.startsWith(href);
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title} — Siza Brand Guide</title>
+    <link rel="icon" href="/favicons/favicon-sizes.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <meta property="og:title" content={`${title} — Siza Brand Guide`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og/default.svg" />
+  </head>
+  <body class="min-h-screen">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <nav class="hidden md:flex flex-col w-64 border-r border-white/10 p-6 shrink-0 sticky top-0 h-screen">
+        <a href="/" class="flex items-center gap-3 mb-10">
+          <img src="/logos/icon.svg" alt="Siza" class="w-8 h-8" />
+          <span class="font-heading text-xl font-bold">Siza</span>
+          <span class="text-[10px] font-mono text-text-muted bg-white/5 px-1.5 py-0.5 rounded">Brand</span>
+        </a>
+
+        <ul class="space-y-1 flex-1">
+          {nav.map(({ href, label, icon }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors",
+                  isActive(href)
+                    ? "bg-brand/15 text-white font-medium"
+                    : "text-text-secondary hover:text-white hover:bg-white/5",
+                ]}
+              >
+                <span class="w-6 text-center text-xs opacity-60">{icon}</span>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="pt-6 border-t border-white/10">
+          <p class="text-[11px] text-text-muted">
+            <a href="https://forgespace.co" class="hover:text-text-secondary transition-colors">
+              Forge Space
+            </a>
+          </p>
+        </div>
+      </nav>
+
+      <!-- Mobile nav -->
+      <div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-1/95 backdrop-blur-sm border-t border-white/10 z-50 px-2 py-1.5">
+        <div class="flex justify-around">
+          {nav.slice(0, 5).map(({ href, label, icon }) => (
+            <a
+              href={href}
+              class:list={[
+                "flex flex-col items-center gap-0.5 px-2 py-1 rounded text-[10px] transition-colors",
+                isActive(href) ? "text-white" : "text-text-muted",
+              ]}
+            >
+              <span class="text-xs">{icon}</span>
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <main class="flex-1 min-w-0 p-8 md:p-12 lg:p-16 pb-24 md:pb-16">
+        <div class="max-w-4xl">
+          <slot />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

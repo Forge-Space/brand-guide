@@ -1,0 +1,165 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import identity from "../../brand/identity.json";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+const tokensCSS = readFileSync(join(process.cwd(), "src/styles/tokens.css"), "utf-8");
+
+const { spacing, shadows, borders, motion, gradients } = identity;
+---
+
+<BaseLayout title="Design Tokens">
+  <header class="mb-12">
+    <h1 class="font-heading text-4xl font-bold mb-3">Design Tokens</h1>
+    <p class="text-text-secondary max-w-xl">
+      All design tokens are generated from a single BrandIdentity source.
+      Download in your preferred format or copy individual values.
+    </p>
+  </header>
+
+  <!-- Download formats -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Download</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      {[
+        { href: "/downloads/tokens.json", label: "W3C JSON", desc: "Design Tokens Community Group format" },
+        { href: "/downloads/tailwind-preset.js", label: "Tailwind", desc: "Ready-to-use Tailwind preset" },
+        { href: "/downloads/tokens.scss", label: "Sass", desc: "Sass variable definitions" },
+        { href: "/downloads/theme.ts", label: "React", desc: "TypeScript theme object" },
+      ].map(({ href, label, desc }) => (
+        <a
+          href={href}
+          download
+          class="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 rounded-xl p-4 transition-all group"
+        >
+          <p class="font-medium text-sm group-hover:text-brand-accent transition-colors">{label}</p>
+          <p class="text-xs text-text-muted mt-1">{desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Spacing -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Spacing</h2>
+    <p class="text-text-muted text-sm mb-6">
+      Base unit: {spacing.unit}px. Values follow a geometric progression.
+    </p>
+    <div class="space-y-2">
+      {Object.entries(spacing.values)
+        .filter(([key]) => !key.includes("."))
+        .sort(([, a], [, b]) => parseInt(a as string) - parseInt(b as string))
+        .map(([key, value]) => (
+          <div class="flex items-center gap-4">
+            <code class="text-xs font-mono text-text-muted w-16">--spacing-{key}</code>
+            <div class="flex-1 flex items-center gap-3">
+              <div
+                class="h-4 rounded-sm bg-brand/40"
+                style={`width: ${value}`}
+              />
+              <code class="text-[11px] font-mono text-text-muted">{value}</code>
+            </div>
+          </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Shadows -->
+  {shadows && (
+    <section class="mb-16">
+      <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Shadows</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {Object.entries(shadows.levels).map(([name, level]: [string, any]) => (
+          <div class="bg-surface-2 rounded-xl p-6 border border-white/5">
+            <div
+              class="w-16 h-16 bg-white/10 rounded-lg mb-4"
+              style={level.cssValue !== "none" ? `box-shadow: ${level.cssValue}` : ""}
+            />
+            <code class="text-xs font-mono text-text-muted block">{name}</code>
+            <code class="text-[10px] font-mono text-text-muted block mt-1 break-all">{level.cssValue}</code>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Borders -->
+  {borders && (
+    <section class="mb-16">
+      <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Border Radii</h2>
+      <div class="flex flex-wrap gap-4">
+        {Object.entries(borders.radii).map(([name, value]: [string, any]) => (
+          <div class="flex flex-col items-center gap-2">
+            <div
+              class="w-16 h-16 border-2 border-brand/40 bg-white/5"
+              style={`border-radius: ${value}`}
+            />
+            <code class="text-[10px] font-mono text-text-muted">{name}</code>
+            <code class="text-[10px] font-mono text-text-muted">{value}</code>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Motion -->
+  {motion && (
+    <section class="mb-16">
+      <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Motion</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-sm font-medium mb-3">Durations</h3>
+          <div class="space-y-2">
+            {Object.entries(motion.durations).map(([name, value]: [string, any]) => (
+              <div class="flex items-center justify-between bg-white/5 rounded-lg px-4 py-2">
+                <code class="text-xs font-mono text-text-muted">{name}</code>
+                <code class="text-xs font-mono">{value}</code>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-3">Easings</h3>
+          <div class="space-y-2">
+            {Object.entries(motion.easings).map(([name, value]: [string, any]) => (
+              <div class="flex items-center justify-between bg-white/5 rounded-lg px-4 py-2">
+                <code class="text-xs font-mono text-text-muted">{name}</code>
+                <code class="text-[10px] font-mono break-all">{value}</code>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Gradients -->
+  {gradients && (
+    <section class="mb-16">
+      <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Gradients</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {Object.entries(gradients.presets).map(([name, gradient]: [string, any]) => (
+          <div>
+            <div
+              class="h-20 rounded-xl mb-2"
+              style={`background: ${gradient.cssValue}`}
+            />
+            <div class="flex items-center justify-between">
+              <code class="text-xs font-mono text-text-muted">{name}</code>
+              <code class="text-[10px] font-mono text-text-muted">{gradient.type} {gradient.angle}°</code>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Full CSS tokens -->
+  <section>
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">All CSS Tokens</h2>
+    <div class="bg-surface-2 rounded-xl p-6 border border-white/5 max-h-[500px] overflow-y-auto">
+      <pre class="text-xs font-mono text-text-secondary"><code>{tokensCSS}</code></pre>
+    </div>
+  </section>
+</BaseLayout>

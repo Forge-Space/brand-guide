@@ -1,0 +1,129 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Assets">
+  <header class="mb-12">
+    <h1 class="font-heading text-4xl font-bold mb-3">Assets</h1>
+    <p class="text-text-secondary max-w-xl">
+      Download brand assets for use in your project, marketing materials, or documentation.
+    </p>
+  </header>
+
+  <!-- Logos -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Logos</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {(["wordmark", "monogram", "abstract", "icon"] as const).map((variant) => (
+        <a
+          href={`/logos/${variant}.svg`}
+          download
+          class="group bg-surface-2 hover:bg-surface-3 rounded-xl p-6 flex flex-col items-center gap-4 border border-white/5 hover:border-white/10 transition-all"
+        >
+          <img src={`/logos/${variant}.svg`} alt={variant} class="w-20 h-20 object-contain" />
+          <div class="text-center">
+            <p class="text-sm font-medium capitalize group-hover:text-brand-accent transition-colors">{variant}</p>
+            <p class="text-[11px] text-text-muted">SVG</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Favicons -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Favicons</h2>
+    <div class="bg-white/5 rounded-xl p-6 border border-white/5">
+      <div class="flex items-end gap-6 mb-6">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-4 h-4 bg-surface-2 rounded-sm flex items-center justify-center">
+            <img src="/favicons/favicon-sizes.svg" alt="" class="w-4 h-4" />
+          </div>
+          <code class="text-[10px] font-mono text-text-muted">16</code>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-8 h-8 bg-surface-2 rounded flex items-center justify-center">
+            <img src="/favicons/favicon-sizes.svg" alt="" class="w-8 h-8" />
+          </div>
+          <code class="text-[10px] font-mono text-text-muted">32</code>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-12 h-12 bg-surface-2 rounded-lg flex items-center justify-center">
+            <img src="/favicons/favicon-sizes.svg" alt="" class="w-12 h-12" />
+          </div>
+          <code class="text-[10px] font-mono text-text-muted">180</code>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 bg-surface-2 rounded-xl flex items-center justify-center">
+            <img src="/favicons/favicon-sizes.svg" alt="" class="w-16 h-16" />
+          </div>
+          <code class="text-[10px] font-mono text-text-muted">512</code>
+        </div>
+      </div>
+      <a
+        href="/favicons/favicon-sizes.svg"
+        download
+        class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg px-4 py-2 text-sm transition-colors"
+      >
+        <span class="text-text-muted">↓</span>
+        Download Favicon SVG
+      </a>
+    </div>
+  </section>
+
+  <!-- OG Images -->
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Open Graph Images</h2>
+    <div class="space-y-6">
+      {[
+        { file: "default.svg", label: "Default", size: "1200 × 630" },
+        { file: "article.svg", label: "Article", size: "1200 × 630" },
+        { file: "social.svg", label: "Social", size: "1200 × 1200" },
+      ].map(({ file, label, size }) => (
+        <div>
+          <div class="bg-surface-2 rounded-xl overflow-hidden border border-white/5">
+            <img src={`/og/${file}`} alt={`${label} OG image`} class="w-full max-h-[200px] object-cover" />
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <div>
+              <p class="text-sm font-medium">{label}</p>
+              <p class="text-xs text-text-muted">{size}px</p>
+            </div>
+            <a
+              href={`/og/${file}`}
+              download
+              class="text-xs text-text-muted hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-md transition-colors"
+            >
+              SVG ↓
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Design tokens -->
+  <section>
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Design Token Packages</h2>
+    <div class="space-y-3">
+      {[
+        { href: "/downloads/tokens.json", label: "W3C Design Tokens (JSON)", desc: "Industry-standard token format, compatible with Style Dictionary and Figma" },
+        { href: "/downloads/tailwind-preset.js", label: "Tailwind CSS Preset", desc: "Drop into your tailwind.config.ts as a preset" },
+        { href: "/downloads/tokens.scss", label: "Sass Variables", desc: "Sass variable definitions for traditional CSS workflows" },
+        { href: "/downloads/theme.ts", label: "React Theme (TypeScript)", desc: "Typed theme object for styled-components, Emotion, or custom theming" },
+      ].map(({ href, label, desc }) => (
+        <a
+          href={href}
+          download
+          class="flex items-center justify-between bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-xl p-4 transition-all group"
+        >
+          <div>
+            <p class="text-sm font-medium group-hover:text-brand-accent transition-colors">{label}</p>
+            <p class="text-xs text-text-muted mt-0.5">{desc}</p>
+          </div>
+          <span class="text-text-muted group-hover:text-white text-sm transition-colors shrink-0 ml-4">↓</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
