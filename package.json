@@ -1,0 +1,28 @@
+{
+  "name": "@forgespace/brand-guide",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forge-Space/brand-guide.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Forge-Space/brand-guide/issues"
+  },
+  "homepage": "https://brand.forgespace.co",
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3"
+  }
+}
