@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "generate": "node scripts/generate-brand.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"
@@ -24,5 +25,8 @@
     "astro": "^5.18.0",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@forgespace/branding-mcp": "^0.5.0"
   }
 }

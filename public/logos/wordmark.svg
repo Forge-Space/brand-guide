@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
   <circle cx="62" cy="60" r="42" fill="#7c3bed"/>
-  <text x="62" y="60" fill="white" font-size="33.599999999999994" font-family="'Raleway', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">S</text>
-  <text x="120" y="60" fill="#7c3bed" font-size="48" font-family="'Raleway', sans-serif" font-weight="600" dominant-baseline="central">Siza</text>
+  <text x="62" y="60" fill="white" font-size="33.599999999999994" font-family="'Outfit', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">S</text>
+  <text x="120" y="60" fill="#7c3bed" font-size="48" font-family="'Outfit', sans-serif" font-weight="600" dominant-baseline="central">Siza</text>
 </svg>

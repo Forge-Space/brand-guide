@@ -1,10 +1,14 @@
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
-const brandingMcp = join(root, "..", "branding-mcp", "dist");
+const require = createRequire(import.meta.url);
+const corePath = dirname(
+  require.resolve("@forgespace/branding-mcp/package.json")
+);
 
 const {
   generateColorPalette,
@@ -23,7 +27,9 @@ const {
   exportTailwindPreset,
   exportSassVariables,
   exportReactTheme,
-} = await import(join(brandingMcp, "lib", "branding-core", "index.js"));
+} = await import(
+  join(corePath, "dist", "lib", "branding-core", "index.js")
+);
 
 const BRAND_NAME = "Siza";
 const INDUSTRY = "technology";
@@ -35,6 +41,12 @@ const HEADING_CATEGORY = "sans-serif";
 const BODY_CATEGORY = "sans-serif";
 const SCALE_RATIO = "major-third";
 const TAGLINE = "Generate. Integrate. Ship.";
+
+const PINNED_FONTS = {
+  headingFont: "Outfit",
+  bodyFont: "Inter",
+  monoFont: "JetBrains Mono",
+};
 
 console.log("Generating Siza brand identity...");
 
@@ -51,19 +63,22 @@ const motion = generateMotionSystem(STYLE);
 const gradients = generateGradientSystem(colors, STYLE);
 const logoConfig = {
   ...defaultLogoConfig(BRAND_NAME, colors.primary.hex),
-  font: typography.headingFont,
+  font: PINNED_FONTS.headingFont,
   style: STYLE,
 };
 const logo = generateSvgLogo(logoConfig);
 
 const identity = {
-  id: `brand_siza_001`,
+  id: "brand_siza_001",
   name: BRAND_NAME,
   tagline: TAGLINE,
   industry: INDUSTRY,
   style: STYLE,
-  colors,
-  typography,
+  colors: {
+    ...colors,
+    primary: { ...colors.primary, hex: BASE_COLOR, name: "Siza Purple" },
+  },
+  typography: { ...typography, ...PINNED_FONTS },
   spacing,
   shadows,
   borders,
@@ -73,11 +88,20 @@ const identity = {
   createdAt: new Date().toISOString(),
 };
 
-console.log("  Colors:", colors.primary.hex, colors.secondary.hex, colors.accent.hex);
-console.log("  Fonts:", typography.headingFont, "/", typography.bodyFont);
+console.log(
+  "  Colors:",
+  identity.colors.primary.hex,
+  identity.colors.secondary.hex,
+  identity.colors.accent.hex
+);
+console.log(
+  "  Fonts:",
+  identity.typography.headingFont,
+  "/",
+  identity.typography.bodyFont
+);
 console.log("  Logo variants:", Object.keys(logo.variants).join(", "));
 
-// Write identity.json
 const brandDir = join(root, "brand");
 mkdirSync(brandDir, { recursive: true });
 writeFileSync(
@@ -86,13 +110,11 @@ writeFileSync(
 );
 console.log("  Wrote brand/identity.json");
 
-// Write CSS tokens
 const cssTokens = exportCssVariables(identity);
 mkdirSync(join(root, "src", "styles"), { recursive: true });
 writeFileSync(join(root, "src", "styles", "tokens.css"), cssTokens);
 console.log("  Wrote src/styles/tokens.css");
 
-// Write W3C design tokens JSON
 const w3cTokens = exportDesignTokens(identity);
 mkdirSync(join(root, "public", "downloads"), { recursive: true });
 writeFileSync(
@@ -101,7 +123,6 @@ writeFileSync(
 );
 console.log("  Wrote public/downloads/tokens.json");
 
-// Write Tailwind preset
 const tailwindPreset = exportTailwindPreset(identity);
 writeFileSync(
   join(root, "public", "downloads", "tailwind-preset.js"),
@@ -109,26 +130,21 @@ writeFileSync(
 );
 console.log("  Wrote public/downloads/tailwind-preset.js");
 
-// Write Sass variables
 const sassVars = exportSassVariables(identity);
 writeFileSync(join(root, "public", "downloads", "tokens.scss"), sassVars);
 console.log("  Wrote public/downloads/tokens.scss");
 
-// Write React theme
 const reactTheme = exportReactTheme(identity);
 writeFileSync(join(root, "public", "downloads", "theme.ts"), reactTheme);
 console.log("  Wrote public/downloads/theme.ts");
 
-// Write logo SVGs
 const logosDir = join(root, "public", "logos");
 mkdirSync(logosDir, { recursive: true });
-writeFileSync(join(logosDir, "wordmark.svg"), logo.variants.wordmark);
-writeFileSync(join(logosDir, "monogram.svg"), logo.variants.monogram);
-writeFileSync(join(logosDir, "abstract.svg"), logo.variants.abstract);
-writeFileSync(join(logosDir, "icon.svg"), logo.variants.icon);
+for (const [name, svg] of Object.entries(logo.variants)) {
+  writeFileSync(join(logosDir, `${name}.svg`), svg);
+}
 console.log("  Wrote 4 logo SVGs to public/logos/");
 
-// Write favicons
 const faviconsDir = join(root, "public", "favicons");
 mkdirSync(faviconsDir, { recursive: true });
 const favicons = generateFavicons(logo.variants.icon, colors.primary.hex);
@@ -138,16 +154,22 @@ for (const [size, svg] of Object.entries(favicons)) {
 }
 console.log("  Wrote favicons to public/favicons/");
 
-// Write OG images
 const ogDir = join(root, "public", "og");
 mkdirSync(ogDir, { recursive: true });
-const ogDefault = generateOgImage(identity, "default");
-const ogArticle = generateOgImage(identity, "article", "Brand Guide");
-const ogSocial = generateOgImage(identity, "social");
-const toStr = (v) => (typeof v === "string" ? v : JSON.stringify(v, null, 2));
-writeFileSync(join(ogDir, "default.svg"), toStr(ogDefault));
-writeFileSync(join(ogDir, "article.svg"), toStr(ogArticle));
-writeFileSync(join(ogDir, "social.svg"), toStr(ogSocial));
+const toStr = (v) =>
+  typeof v === "string" ? v : JSON.stringify(v, null, 2);
+writeFileSync(
+  join(ogDir, "default.svg"),
+  toStr(generateOgImage(identity, "default"))
+);
+writeFileSync(
+  join(ogDir, "article.svg"),
+  toStr(generateOgImage(identity, "article", "Brand Guide"))
+);
+writeFileSync(
+  join(ogDir, "social.svg"),
+  toStr(generateOgImage(identity, "social"))
+);
 console.log("  Wrote 3 OG images to public/og/");
 
 console.log("\nDone! Brand identity generated successfully.");
