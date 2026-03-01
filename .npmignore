@@ -1,0 +1,16 @@
+src/
+scripts/
+dist/
+.astro/
+.serena/
+.claude/
+.github/
+public/logos/concepts/
+node_modules/
+*.log
+.DS_Store
+TEMPLATE.md
+CLAUDE.md
+astro.config.mjs
+tsconfig.json
+tsconfig.lib.json
