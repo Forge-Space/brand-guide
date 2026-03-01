@@ -11,6 +11,6 @@
     <rect x="22" y="24" width="24" height="12" rx="2" fill="white"/>
     <rect x="16" y="40" width="38" height="14" rx="3" fill="white"/>
   </g>
-  <text x="600" y="315" fill="white" font-size="56" font-family="'Outfit', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">Forge Space</text>
-  <text x="600" y="375" fill="white" font-size="28" font-family="'Outfit', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.8">The developer tools ecosystem.</text>
+  <text x="600" y="315" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">Forge Space</text>
+  <text x="600" y="375" fill="white" font-size="28" font-family="'Space Grotesk', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.8">The developer tools ecosystem.</text>
 </svg>
