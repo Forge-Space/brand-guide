@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.0] - 2026-03-01
+
+### Added
+
+- npm package exports: `@forgespace/brand-guide` (identity object + types), `@forgespace/brand-guide/identity` (raw JSON)
+- Library build target (`dist-lib/`) separate from Astro site build (`dist/`)
+- TypeScript declarations for all exported brand identity types
+- Publish workflow (`.github/workflows/publish.yml`) triggered on version tags
+- `.npmignore` to exclude site-only files from tarball
+
+### Changed
+
+- Package is no longer `private` — publishable to npm as `@forgespace/brand-guide`
+- `@forgespace/branding-mcp` moved to dependencies (required for type resolution)
+
 ## [0.2.0] - 2026-03-01
 
 ### Changed

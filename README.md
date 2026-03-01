@@ -18,6 +18,28 @@ Brand identity guidelines, design tokens, and assets for [Forge Space](https://f
 |---------|--------|------|
 | Siza | Active | TBD (inherits Forge Space tokens) |
 
+## npm Package
+
+Install the brand identity as an npm package for programmatic access in other projects:
+
+```bash
+npm install @forgespace/brand-guide
+```
+
+```typescript
+import { identity } from '@forgespace/brand-guide';
+import type { BrandIdentity } from '@forgespace/brand-guide';
+
+console.log(identity.name);               // "Forge Space"
+console.log(identity.colors.primary.hex);  // "#7c3aed"
+```
+
+Raw JSON import:
+
+```typescript
+import identity from '@forgespace/brand-guide/identity';
+```
+
 ## Use as Template
 
 This repo doubles as a reusable brand guide template. See [TEMPLATE.md](TEMPLATE.md) for instructions on creating your own brand guide.
