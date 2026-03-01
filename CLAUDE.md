@@ -1,6 +1,6 @@
 # @forgespace/brand-guide
 
-Siza brand identity guide — static site built with Astro + Tailwind v4.
+Forge Space brand identity guide — static site built with Astro + Tailwind v4.
 
 ## Architecture
 
@@ -27,7 +27,17 @@ npm run check        # Astro type checking
 - `brand/identity.json` is the single source of truth
 - Astro components for static content, islands only for interactive features
 - Fonts: Outfit (headings), Inter (body), JetBrains Mono (mono)
-- Colors: primary #7c3aed, secondary #5c6ee6, accent #e12bfd
+- Colors: primary #7c3aed (Forge Purple), secondary #3B82F6 (Forge Blue), accent #F59E0B (Forge Amber)
+
+## Brand Hierarchy
+
+- **Forge Space** — parent organization brand (this guide)
+- **Siza** — product sub-brand under Forge Space (mark TBD, inherits Forge Space design tokens)
+
+## Logo
+
+- 3-tier notch anvil using the Flame Rise color system (amber top, blue middle, purple base)
+- 7 variants: wordmark, monogram, icon, abstract, wordmark-blue, wordmark-purple, wordmark-white
 
 ## Key Files
 
@@ -35,5 +45,5 @@ npm run check        # Astro type checking
 - `src/styles/tokens.css` — CSS custom properties (generated)
 - `src/styles/global.css` — Tailwind v4 @theme + base styles
 - `scripts/generate-brand.mjs` — Token generation pipeline
-- `public/logos/` — SVG logo variants (wordmark, monogram, abstract, icon)
+- `public/logos/` — SVG logo variants (wordmark, monogram, abstract, icon, tint wordmarks)
 - `public/downloads/` — Downloadable token packages

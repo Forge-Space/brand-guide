@@ -1,16 +1,22 @@
-# Siza Brand Guide
+# Forge Space Brand Guide
 
-Brand identity guidelines, design tokens, and assets for [Siza](https://siza.forgespace.co) by [Forge Space](https://forgespace.co).
+Brand identity guidelines, design tokens, and assets for [Forge Space](https://forgespace.co) — the developer tools ecosystem.
 
 **Live:** [brand.forgespace.co](https://brand.forgespace.co)
 
 ## What's Inside
 
-- **Logo** — 4 variants: wordmark, monogram, abstract, icon
-- **Colors** — Primary, secondary, accent, neutrals, semantic (WCAG validated)
+- **Logo** — 3-tier notch anvil (Flame Rise) with 7 variants: wordmark, monogram, icon, abstract, + 3 tint wordmarks
+- **Colors** — Forge Purple (#7C3AED), Forge Blue (#3B82F6), Forge Amber (#F59E0B), neutrals, semantic (WCAG validated)
 - **Typography** — Outfit / Inter / JetBrains Mono with major-third type scale
 - **Design Tokens** — CSS, JSON (W3C), Tailwind, Sass, React theme exports
 - **Spacing, Shadows, Borders, Motion, Gradients** — Full token coverage
+
+## Product Brands
+
+| Product | Status | Mark |
+|---------|--------|------|
+| Siza | Active | TBD (inherits Forge Space tokens) |
 
 ## Use as Template
 

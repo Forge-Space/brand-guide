@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Spark -->
+  <path d="M32 2 L33.5 5 L37 3.5 L34 6.5 L37 8 L33.5 7 L32 10 L30.5 7 L27 8 L30 6.5 L27 3.5 L30.5 5 Z" fill="#E12BFD"/>
+  <!-- Face: wide top bar -->
+  <rect x="6" y="14" width="52" height="11" rx="3" fill="#7C3AED"/>
+  <!-- Body: narrow middle -->
+  <rect x="20" y="29" width="24" height="10" rx="2" fill="#7C3AED"/>
+  <!-- Base: medium bottom -->
+  <rect x="12" y="43" width="40" height="13" rx="3" fill="#7C3AED"/>
+</svg>

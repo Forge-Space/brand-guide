@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Left bracket forming anvil shape -->
+  <path d="M8 8 H26 V18 H18 V46 H26 V56 H8 Z" rx="2" fill="#7C3AED"/>
+  <!-- Right bracket forming anvil shape -->
+  <path d="M38 8 H56 V56 H38 V46 H46 V18 H38 Z" rx="2" fill="#7C3AED"/>
+  <!-- Center spark/pixel -->
+  <rect x="28" y="28" width="8" height="8" rx="1" fill="#E12BFD"/>
+</svg>

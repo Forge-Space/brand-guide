@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Face: wide top bar -->
+  <rect x="6" y="8" width="52" height="12" rx="3" fill="#7C3AED"/>
+  <!-- Body: narrow middle -->
+  <rect x="20" y="24" width="24" height="12" rx="2" fill="#7C3AED"/>
+  <!-- Base: medium bottom -->
+  <rect x="12" y="40" width="40" height="14" rx="3" fill="#7C3AED"/>
+</svg>

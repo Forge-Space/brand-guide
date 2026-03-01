@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Hammer head -->
+  <rect x="10" y="6" width="44" height="14" rx="3" fill="#7C3AED"/>
+  <!-- Handle -->
+  <rect x="28" y="20" width="8" height="18" rx="2" fill="#7C3AED"/>
+  <!-- Impact sparks -->
+  <circle cx="24" cy="44" r="2" fill="#E12BFD" opacity="0.6"/>
+  <circle cx="40" cy="44" r="2" fill="#E12BFD" opacity="0.6"/>
+  <!-- Created component (pixel being forged) -->
+  <rect x="22" y="42" width="20" height="16" rx="3" fill="#7C3AED"/>
+</svg>

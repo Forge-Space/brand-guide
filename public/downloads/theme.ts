@@ -3,8 +3,8 @@ import type { CSSProperties } from 'react';
 export const theme = {
   "colors": {
     "primary": "#7c3aed",
-    "secondary": "#5c6ee6",
-    "accent": "#e12bfd",
+    "secondary": "#3B82F6",
+    "accent": "#F59E0B",
     "neutral-100": "#f2f2f3",
     "neutral-200": "#e5e4e7",
     "neutral-300": "#cbc9cf",
@@ -109,10 +109,10 @@ export const theme = {
     }
   },
   "gradients": {
-    "hero": "linear-gradient(315deg, #7c3bed 0%, #5c6ee6 100%)",
-    "button": "linear-gradient(315deg, #e12bfd 0%, #7c3bed 100%)",
+    "hero": "linear-gradient(315deg, #7c3aed 0%, #3B82F6 100%)",
+    "button": "linear-gradient(315deg, #F59E0B 0%, #7c3aed 100%)",
     "card": "linear-gradient(315deg, #f2f2f3 0%, #cacace 100%)",
-    "text": "linear-gradient(315deg, #7c3bed 0%, #e12bfd 100%)",
+    "text": "linear-gradient(315deg, #7c3aed 0%, #F59E0B 100%)",
     "background": "linear-gradient(315deg, #f2f2f3 0%, #0d0c0d 100%)"
   }
 } as const;

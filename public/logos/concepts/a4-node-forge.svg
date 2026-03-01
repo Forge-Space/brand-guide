@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Face -->
+  <rect x="6" y="8" width="52" height="12" rx="3" fill="#7C3AED"/>
+  <!-- Connection nodes -->
+  <circle cx="20" cy="23" r="1.5" fill="#E12BFD"/>
+  <circle cx="44" cy="23" r="1.5" fill="#E12BFD"/>
+  <line x1="20" y1="20" x2="20" y2="24" stroke="#E12BFD" stroke-width="1" opacity="0.5"/>
+  <line x1="44" y1="20" x2="44" y2="24" stroke="#E12BFD" stroke-width="1" opacity="0.5"/>
+  <!-- Body -->
+  <rect x="20" y="24" width="24" height="12" rx="2" fill="#7C3AED"/>
+  <!-- Connection nodes -->
+  <circle cx="18" cy="39" r="1.5" fill="#E12BFD"/>
+  <circle cx="46" cy="39" r="1.5" fill="#E12BFD"/>
+  <line x1="18" y1="36" x2="18" y2="40" stroke="#E12BFD" stroke-width="1" opacity="0.5"/>
+  <line x1="46" y1="36" x2="46" y2="40" stroke="#E12BFD" stroke-width="1" opacity="0.5"/>
+  <!-- Base -->
+  <rect x="12" y="40" width="40" height="14" rx="3" fill="#7C3AED"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Anvil bars -->
+  <rect x="4" y="8" width="44" height="12" rx="3" fill="#7C3AED"/>
+  <rect x="14" y="24" width="24" height="12" rx="2" fill="#7C3AED"/>
+  <rect x="8" y="40" width="36" height="14" rx="3" fill="#7C3AED"/>
+  <!-- Output pixels: components being forged -->
+  <rect x="52" y="9" width="8" height="8" rx="2" fill="#E12BFD"/>
+  <rect x="52" y="26" width="8" height="8" rx="2" fill="#7C3AED" opacity="0.4"/>
+  <rect x="52" y="43" width="8" height="8" rx="2" fill="#7C3AED" opacity="0.2"/>
+</svg>

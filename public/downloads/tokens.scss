@@ -2,8 +2,8 @@
 
 // Colors
 $color-primary: #7c3aed;
-$color-secondary: #5c6ee6;
-$color-accent: #e12bfd;
+$color-secondary: #3B82F6;
+$color-accent: #F59E0B;
 $color-neutral-100: #f2f2f3;
 $color-neutral-200: #e5e4e7;
 $color-neutral-300: #cbc9cf;
@@ -91,8 +91,8 @@ $ease-spring: cubic-bezier(0.2, 1.6, 0.4, 1);
 $ease-bounce: cubic-bezier(0.2, 1.4, 0.4, 1);
 
 // Gradients
-$gradient-hero: linear-gradient(315deg, #7c3bed 0%, #5c6ee6 100%);
-$gradient-button: linear-gradient(315deg, #e12bfd 0%, #7c3bed 100%);
+$gradient-hero: linear-gradient(315deg, #7c3aed 0%, #3B82F6 100%);
+$gradient-button: linear-gradient(315deg, #F59E0B 0%, #7c3aed 100%);
 $gradient-card: linear-gradient(315deg, #f2f2f3 0%, #cacace 100%);
-$gradient-text: linear-gradient(315deg, #7c3bed 0%, #e12bfd 100%);
+$gradient-text: linear-gradient(315deg, #7c3aed 0%, #F59E0B 100%);
 $gradient-background: linear-gradient(315deg, #f2f2f3 0%, #0d0c0d 100%);

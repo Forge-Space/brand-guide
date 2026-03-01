@@ -1,18 +1,12 @@
 {
-  "id": "brand_siza_001",
-  "name": "Siza",
-  "tagline": "Generate. Integrate. Ship.",
+  "id": "brand_forgespace_001",
+  "name": "Forge Space",
+  "tagline": "The developer tools ecosystem.",
   "industry": "technology",
   "style": "tech",
-  "organization": {
-    "name": "Forge Space",
-    "tagline": "Build better, ship faster.",
-    "url": "https://forgespace.co",
-    "mark": "Anvil — geometric L-shape representing a forge anvil. Two offset blocks: wider face (top) and narrower base (bottom-left)."
-  },
   "colors": {
     "primary": {
-      "name": "Siza Purple",
+      "name": "Forge Purple",
       "hex": "#7c3aed",
       "hsl": {
         "h": 262,
@@ -22,22 +16,22 @@
       "usage": "Primary brand color"
     },
     "secondary": {
-      "name": "secondary",
-      "hex": "#5c6ee6",
+      "name": "Forge Blue",
+      "hex": "#3B82F6",
       "hsl": {
-        "h": 232,
-        "s": 73,
-        "l": 63
+        "h": 217,
+        "s": 91,
+        "l": 60
       },
       "usage": "Secondary brand color"
     },
     "accent": {
-      "name": "accent",
-      "hex": "#e12bfd",
+      "name": "Forge Amber",
+      "hex": "#F59E0B",
       "hsl": {
-        "h": 292,
-        "s": 98,
-        "l": 58
+        "h": 43,
+        "s": 96,
+        "l": 50
       },
       "usage": "Accent and highlight color"
     },
@@ -393,30 +387,30 @@
         "angle": 315,
         "stops": [
           {
-            "color": "#7c3bed",
+            "color": "#7c3aed",
             "position": 0
           },
           {
-            "color": "#5c6ee6",
+            "color": "#3B82F6",
             "position": 100
           }
         ],
-        "cssValue": "linear-gradient(315deg, #7c3bed 0%, #5c6ee6 100%)"
+        "cssValue": "linear-gradient(315deg, #7c3aed 0%, #3B82F6 100%)"
       },
       "button": {
         "type": "linear",
         "angle": 315,
         "stops": [
           {
-            "color": "#e12bfd",
+            "color": "#F59E0B",
             "position": 0
           },
           {
-            "color": "#7c3bed",
+            "color": "#7c3aed",
             "position": 100
           }
         ],
-        "cssValue": "linear-gradient(315deg, #e12bfd 0%, #7c3bed 100%)"
+        "cssValue": "linear-gradient(315deg, #F59E0B 0%, #7c3aed 100%)"
       },
       "card": {
         "type": "linear",
@@ -438,15 +432,15 @@
         "angle": 315,
         "stops": [
           {
-            "color": "#7c3bed",
+            "color": "#7c3aed",
             "position": 0
           },
           {
-            "color": "#e12bfd",
+            "color": "#F59E0B",
             "position": 100
           }
         ],
-        "cssValue": "linear-gradient(315deg, #7c3bed 0%, #e12bfd 100%)"
+        "cssValue": "linear-gradient(315deg, #7c3aed 0%, #F59E0B 100%)"
       },
       "background": {
         "type": "linear",
@@ -466,14 +460,13 @@
     }
   },
   "logo": {
-    "description": "The Siza anvil mark — a geometric L-shape representing a forge anvil. The wider top block is the face, the narrower bottom-left block is the base. Uses only #7C3AED (Forge Violet) or #FAFAFA (white). Never apply gradients, rotation, or drop shadows.",
-    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"120\" viewBox=\"0 0 400 120\" fill=\"none\"><path d=\"M11 8h78a4 4 0 0 1 4 4v46a4 4 0 0 1-4 4H58v42a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z\" fill=\"#7C3AED\"/><text x=\"116\" y=\"76\" fill=\"#7C3AED\" font-size=\"72\" font-family=\"'Outfit', sans-serif\" font-weight=\"800\" letter-spacing=\"-0.02em\">SIZA</text></svg>",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"64\" viewBox=\"0 0 200 64\" fill=\"none\">\n  <path d=\"M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z\" fill=\"#F59E0B\"/>\n  <rect x=\"22\" y=\"24\" width=\"24\" height=\"12\" rx=\"2\" fill=\"#3B82F6\"/>\n  <rect x=\"16\" y=\"40\" width=\"38\" height=\"14\" rx=\"3\" fill=\"#7C3AED\"/>\n  <text x=\"78\" y=\"30\" fill=\"#7C3AED\" font-size=\"20\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" letter-spacing=\"0.12em\">FORGE</text>\n  <text x=\"78\" y=\"52\" fill=\"#7C3AED\" font-size=\"20\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" letter-spacing=\"0.12em\">SPACE</text>\n</svg>",
     "variants": {
-      "wordmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"120\" viewBox=\"0 0 400 120\" fill=\"none\"><path d=\"M11 8h78a4 4 0 0 1 4 4v46a4 4 0 0 1-4 4H58v42a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z\" fill=\"#7C3AED\"/><text x=\"116\" y=\"76\" fill=\"#7C3AED\" font-size=\"72\" font-family=\"'Outfit', sans-serif\" font-weight=\"800\" letter-spacing=\"-0.02em\">SIZA</text></svg>",
-      "monogram": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" fill=\"none\"><path d=\"M13 8h94a5 5 0 0 1 5 5v56a5 5 0 0 1-5 5H69v33a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5V13a5 5 0 0 1 5-5Z\" fill=\"#7C3AED\"/></svg>",
-      "abstract": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" fill=\"none\"><path d=\"M13 8h94a5 5 0 0 1 5 5v56a5 5 0 0 1-5 5H69v33a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5V13a5 5 0 0 1 5-5Z\" stroke=\"#7C3AED\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M30 38h30v30H30z\" fill=\"#7C3AED\" opacity=\"0.15\" rx=\"2\"/><circle cx=\"75\" cy=\"45\" r=\"8\" fill=\"#7C3AED\" opacity=\"0.25\"/><circle cx=\"45\" cy=\"90\" r=\"5\" fill=\"#7C3AED\" opacity=\"0.2\"/></svg>",
-      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\"><path d=\"M7 4h50a3 3 0 0 1 3 3v30a3 3 0 0 1-3 3H37v17a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z\" fill=\"#7C3AED\"/></svg>"
+      "wordmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"64\" viewBox=\"0 0 200 64\" fill=\"none\">\n  <path d=\"M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z\" fill=\"#F59E0B\"/>\n  <rect x=\"22\" y=\"24\" width=\"24\" height=\"12\" rx=\"2\" fill=\"#3B82F6\"/>\n  <rect x=\"16\" y=\"40\" width=\"38\" height=\"14\" rx=\"3\" fill=\"#7C3AED\"/>\n  <text x=\"78\" y=\"30\" fill=\"#7C3AED\" font-size=\"20\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" letter-spacing=\"0.12em\">FORGE</text>\n  <text x=\"78\" y=\"52\" fill=\"#7C3AED\" font-size=\"20\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" letter-spacing=\"0.12em\">SPACE</text>\n</svg>",
+      "monogram": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\">\n  <path d=\"M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z\" fill=\"#F59E0B\"/>\n  <rect x=\"22\" y=\"24\" width=\"24\" height=\"12\" rx=\"2\" fill=\"#3B82F6\"/>\n  <rect x=\"16\" y=\"40\" width=\"38\" height=\"14\" rx=\"3\" fill=\"#7C3AED\"/>\n</svg>",
+      "abstract": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\">\n  <path d=\"M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z\" fill=\"#7C3AED\"/>\n  <rect x=\"22\" y=\"24\" width=\"24\" height=\"12\" rx=\"2\" fill=\"#7C3AED\"/>\n  <rect x=\"16\" y=\"40\" width=\"38\" height=\"14\" rx=\"3\" fill=\"#7C3AED\"/>\n</svg>",
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\">\n  <path d=\"M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z\" fill=\"#F59E0B\"/>\n  <rect x=\"22\" y=\"24\" width=\"24\" height=\"12\" rx=\"2\" fill=\"#3B82F6\"/>\n  <rect x=\"16\" y=\"40\" width=\"38\" height=\"14\" rx=\"3\" fill=\"#7C3AED\"/>\n</svg>"
     }
   },
-  "createdAt": "2026-02-28T20:04:05.608Z"
+  "createdAt": "2026-03-01T05:30:21.578Z"
 }

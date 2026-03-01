@@ -13,9 +13,9 @@ import identity from "../../brand/identity.json";
       </div>
     </div>
     <p class="text-text-muted text-sm max-w-xl leading-relaxed">
-      Brand identity guidelines, design tokens, and assets for the Siza platform
-      by <a href="https://forgespace.co" class="text-text-secondary hover:text-white transition-colors">Forge Space</a>.
-      This guide defines how Siza looks across web, desktop, and marketing materials.
+      Brand identity guidelines, design tokens, and assets for the
+      <a href="https://forgespace.co" class="text-text-secondary hover:text-white transition-colors">Forge Space</a> ecosystem.
+      This guide defines how Forge Space looks across web, desktop, and marketing materials.
     </p>
   </header>
 
@@ -74,7 +74,7 @@ import identity from "../../brand/identity.json";
   <!-- Token formats -->
   <section class="mt-16">
     <h2 class="font-heading text-2xl font-bold mb-4">Download Tokens</h2>
-    <p class="text-text-muted text-sm mb-6">Use these design tokens to integrate Siza's brand into your project.</p>
+    <p class="text-text-muted text-sm mb-6">Use these design tokens to integrate Forge Space's brand into your project.</p>
     <div class="flex flex-wrap gap-3">
       {[
         { href: "/downloads/tokens.json", label: "W3C JSON" },
@@ -91,6 +91,24 @@ import identity from "../../brand/identity.json";
           {label}
         </a>
       ))}
+    </div>
+  </section>
+
+  <!-- Product Brands -->
+  <section class="mt-16">
+    <h2 class="font-heading text-2xl font-bold mb-4">Product Brands</h2>
+    <p class="text-text-muted text-sm mb-6">Products under the Forge Space umbrella. Each will develop its own distinct mark.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="bg-white/[0.03] border border-white/5 rounded-xl p-5">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-8 h-8 rounded-lg bg-brand/20 flex items-center justify-center">
+            <span class="font-heading font-bold text-sm text-brand-accent">S</span>
+          </div>
+          <h3 class="font-heading font-semibold">Siza</h3>
+          <span class="text-[10px] font-mono text-text-muted bg-white/5 px-1.5 py-0.5 rounded">Mark TBD</span>
+        </div>
+        <p class="text-text-muted text-sm">AI-powered UI generation platform. Inherits Forge Space colors, typography, and design tokens.</p>
+      </div>
     </div>
   </section>
 </BaseLayout>

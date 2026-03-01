@@ -1,0 +1,214 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const primary = { hex: "#7C3AED", hsl: "262°, 83%, 58%", name: "Forge Violet" };
+
+const palettes = [
+  {
+    id: "current",
+    name: "Current — Analogous",
+    theory: "Both colors within 30° of primary. All cool-toned. Safe but low contrast between the three.",
+    secondary: { hex: "#5C6EE6", hsl: "232°, 73%, 63%", name: "Forge Blue" },
+    accent: { hex: "#E12BFD", hsl: "292°, 98%, 58%", name: "Fuchsia" },
+  },
+  {
+    id: "warm-accent",
+    name: "Warm Accent",
+    theory: "Cool indigo secondary for depth. Rose accent — warmer, more approachable, strong CTA contrast against purple. Popular in design tools (Figma, Framer).",
+    secondary: { hex: "#6366F1", hsl: "239°, 84%, 67%", name: "Indigo" },
+    accent: { hex: "#F43F5E", hsl: "347°, 89%, 60%", name: "Rose" },
+  },
+  {
+    id: "sky-rose",
+    name: "Sky + Rose",
+    theory: "Sky blue secondary (trust, tech) + rose accent (energy, warmth). Maximum contrast between secondary and accent — one cool, one warm. Clean SaaS feel.",
+    secondary: { hex: "#0EA5E9", hsl: "199°, 89%, 48%", name: "Sky Blue" },
+    accent: { hex: "#F43F5E", hsl: "347°, 89%, 60%", name: "Rose" },
+  },
+  {
+    id: "amber-fire",
+    name: "Amber Fire",
+    theory: "Steel blue secondary (reliability) + amber accent (forge heat, fire). The amber evokes the forge flame — literal 'forging' energy. Warm CTA pops hard against cool backgrounds.",
+    secondary: { hex: "#3B82F6", hsl: "217°, 91%, 60%", name: "Blue" },
+    accent: { hex: "#F59E0B", hsl: "43°, 96%, 50%", name: "Amber" },
+  },
+  {
+    id: "coral-punch",
+    name: "Coral Punch",
+    theory: "Deep blue secondary (authority, depth) + coral accent (vibrant, human, approachable). Coral reads as friendly and creative — less aggressive than red, warmer than pink.",
+    secondary: { hex: "#2563EB", hsl: "221°, 83%, 53%", name: "Royal Blue" },
+    accent: { hex: "#F97316", hsl: "25°, 95%, 53%", name: "Orange" },
+  },
+  {
+    id: "crimson-edge",
+    name: "Crimson Edge",
+    theory: "Cyan-blue secondary (future, space) + crimson accent (urgency, power). High drama. The purple-blue-red triad is classic sci-fi. Bold and unapologetic.",
+    secondary: { hex: "#06B6D4", hsl: "189°, 94%, 43%", name: "Cyan" },
+    accent: { hex: "#DC2626", hsl: "0°, 72%, 51%", name: "Red" },
+  },
+] as const;
+---
+
+<BaseLayout title="Color Palette Exploration">
+  <header class="mb-12">
+    <h1 class="font-heading text-4xl font-bold mb-3">Color Palette Exploration</h1>
+    <p class="text-text-secondary max-w-xl">
+      Finding the right secondary and accent for Forge Space's primary <span class="font-mono text-sm" style={`color: ${primary.hex}`}>{primary.hex}</span> — comparing color harmonies, contrast, and how they feel in UI context.
+    </p>
+  </header>
+
+  <!-- Primary anchor -->
+  <section class="mb-12">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-4">Primary — Fixed</h2>
+    <div class="flex items-center gap-4">
+      <div class="w-20 h-20 rounded-xl" style={`background: ${primary.hex}`}></div>
+      <div>
+        <span class="font-heading font-bold text-lg">{primary.name}</span>
+        <div class="text-xs text-text-muted font-mono mt-1">{primary.hex} · {primary.hsl}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Palette comparisons -->
+  <div class="space-y-16">
+    {palettes.map((palette) => (
+      <section class="group">
+        <div class="flex items-baseline gap-3 mb-2">
+          <h2 class="font-heading text-xl font-bold">{palette.name}</h2>
+          {palette.id === "current" && <span class="text-[10px] font-mono text-text-muted bg-white/5 px-2 py-0.5 rounded">CURRENT</span>}
+        </div>
+        <p class="text-sm text-text-secondary max-w-xl mb-6">{palette.theory}</p>
+
+        <!-- Swatch row -->
+        <div class="flex gap-3 mb-6">
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-lg" style={`background: ${primary.hex}`}></div>
+            <span class="text-[10px] text-text-muted font-mono mt-1.5 block">Primary</span>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-lg" style={`background: ${palette.secondary.hex}`}></div>
+            <span class="text-[10px] text-text-muted font-mono mt-1.5 block">Secondary</span>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-lg" style={`background: ${palette.accent.hex}`}></div>
+            <span class="text-[10px] text-text-muted font-mono mt-1.5 block">Accent</span>
+          </div>
+          <!-- Gradient combo -->
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-lg" style={`background: linear-gradient(135deg, ${primary.hex}, ${palette.secondary.hex})`}></div>
+            <span class="text-[10px] text-text-muted font-mono mt-1.5 block">P → S</span>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-lg" style={`background: linear-gradient(135deg, ${primary.hex}, ${palette.accent.hex})`}></div>
+            <span class="text-[10px] text-text-muted font-mono mt-1.5 block">P → A</span>
+          </div>
+        </div>
+
+        <!-- Mini UI mockups -->
+        <div class="bg-surface-2 rounded-xl border border-white/5 p-6">
+          <div class="flex flex-wrap gap-4 items-center">
+            <!-- Primary button -->
+            <button class="px-4 py-2 rounded-lg text-white text-sm font-medium" style={`background: ${primary.hex}`}>
+              Primary
+            </button>
+            <!-- Secondary button -->
+            <button class="px-4 py-2 rounded-lg text-white text-sm font-medium" style={`background: ${palette.secondary.hex}`}>
+              Secondary
+            </button>
+            <!-- Accent button -->
+            <button class="px-4 py-2 rounded-lg text-white text-sm font-medium" style={`background: ${palette.accent.hex}`}>
+              Accent CTA
+            </button>
+            <!-- Ghost button -->
+            <button class="px-4 py-2 rounded-lg text-sm font-medium border" style={`color: ${primary.hex}; border-color: ${primary.hex}`}>
+              Ghost
+            </button>
+            <!-- Badges -->
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium text-white" style={`background: ${palette.secondary.hex}`}>Badge</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium text-white" style={`background: ${palette.accent.hex}`}>New</span>
+          </div>
+
+          <!-- Mini card -->
+          <div class="mt-4 flex gap-4">
+            <div class="flex-1 bg-white/5 rounded-lg p-4 border-l-[3px]" style={`border-color: ${primary.hex}`}>
+              <div class="text-xs font-bold mb-1">Primary card</div>
+              <div class="text-[10px] text-text-muted">Left border accent pattern</div>
+            </div>
+            <div class="flex-1 bg-white/5 rounded-lg p-4 border-l-[3px]" style={`border-color: ${palette.secondary.hex}`}>
+              <div class="text-xs font-bold mb-1">Secondary card</div>
+              <div class="text-[10px] text-text-muted">Supporting content</div>
+            </div>
+            <div class="flex-1 bg-white/5 rounded-lg p-4 border-l-[3px]" style={`border-color: ${palette.accent.hex}`}>
+              <div class="text-xs font-bold mb-1">Accent card</div>
+              <div class="text-[10px] text-text-muted">Highlighted content</div>
+            </div>
+          </div>
+
+          <!-- Progress / data viz -->
+          <div class="mt-4 flex items-center gap-2">
+            <div class="h-2 rounded-full flex-1 bg-white/10 overflow-hidden flex">
+              <div class="h-full rounded-full" style={`width: 45%; background: ${primary.hex}`}></div>
+              <div class="h-full" style={`width: 30%; background: ${palette.secondary.hex}`}></div>
+              <div class="h-full rounded-r-full" style={`width: 15%; background: ${palette.accent.hex}`}></div>
+            </div>
+            <span class="text-[10px] text-text-muted font-mono">Data viz</span>
+          </div>
+        </div>
+
+        <!-- Light background test -->
+        <div class="bg-white rounded-xl p-6 mt-3">
+          <div class="flex flex-wrap gap-4 items-center">
+            <button class="px-4 py-2 rounded-lg text-white text-sm font-medium" style={`background: ${primary.hex}`}>
+              Primary
+            </button>
+            <button class="px-4 py-2 rounded-lg text-white text-sm font-medium" style={`background: ${palette.secondary.hex}`}>
+              Secondary
+            </button>
+            <button class="px-4 py-2 rounded-lg text-white text-sm font-medium" style={`background: ${palette.accent.hex}`}>
+              Accent CTA
+            </button>
+            <span class="text-sm font-medium" style={`color: ${primary.hex}`}>Primary text</span>
+            <span class="text-sm font-medium" style={`color: ${palette.secondary.hex}`}>Secondary text</span>
+            <span class="text-sm font-medium" style={`color: ${palette.accent.hex}`}>Accent text</span>
+          </div>
+        </div>
+
+        <!-- Color details -->
+        <div class="mt-3 flex gap-6">
+          <div class="text-xs text-text-muted">
+            <span class="font-mono">{palette.secondary.hex}</span> · {palette.secondary.hsl} · <span class="font-medium text-text-primary">{palette.secondary.name}</span>
+          </div>
+          <div class="text-xs text-text-muted">
+            <span class="font-mono">{palette.accent.hex}</span> · {palette.accent.hsl} · <span class="font-medium text-text-primary">{palette.accent.name}</span>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- Side by side final comparison -->
+  <section class="mt-20 mb-16">
+    <h2 class="font-heading text-2xl font-bold mb-6">Side-by-Side — Gradients with Logo</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {palettes.map((palette) => (
+        <div class="rounded-xl overflow-hidden">
+          <div class="p-8 flex items-center justify-center" style={`background: linear-gradient(135deg, ${primary.hex} 0%, ${palette.secondary.hex} 100%)`}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 64 64" fill="none">
+              <path d="M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z" fill="white"/>
+              <rect x="22" y="24" width="24" height="12" rx="2" fill="white"/>
+              <rect x="16" y="40" width="38" height="14" rx="3" fill="white"/>
+            </svg>
+          </div>
+          <div class="bg-surface-2 p-3 border-t border-white/5">
+            <span class="text-xs font-heading font-bold">{palette.name}</span>
+            <div class="flex gap-1.5 mt-2">
+              <div class="w-4 h-4 rounded" style={`background: ${primary.hex}`}></div>
+              <div class="w-4 h-4 rounded" style={`background: ${palette.secondary.hex}`}></div>
+              <div class="w-4 h-4 rounded" style={`background: ${palette.accent.hex}`}></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
