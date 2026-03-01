@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.1] - 2026-03-01
+
+### Changed
+- Logo typography: Jockey One replaces Space Grotesk for wordmark/titles
+- OG images: darker gradient (#4c1d95→#1e40af), centered vertical layout, opacity-stepped anvil tiers
+- Fonts embedded as base64 @font-face in SVGs for social media crawler compatibility
+
+### Added
+- Font files: `src/fonts/jockey-one.woff2`, `src/fonts/space-grotesk.woff`
+- Wordmark tint variants: wordmark-white, wordmark-blue, wordmark-purple
+- `createdAt` preservation in identity.json across regenerations
+
 ## [0.3.0] - 2026-03-01
 
 ### Added
