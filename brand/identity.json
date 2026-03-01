@@ -16,24 +16,24 @@
       "usage": "Primary brand color"
     },
     "secondary": {
-      "name": "Forge Blue",
-      "hex": "#3B82F6",
+      "name": "Forge Violet",
+      "hex": "#8B5CF6",
       "hsl": {
-        "h": 217,
-        "s": 91,
-        "l": 60
+        "h": 258,
+        "s": 90,
+        "l": 66
       },
-      "usage": "Secondary brand color"
+      "usage": "Secondary brand color — middle tier"
     },
     "accent": {
-      "name": "Forge Amber",
-      "hex": "#F59E0B",
+      "name": "Forge Lavender",
+      "hex": "#A78BFA",
       "hsl": {
-        "h": 43,
-        "s": 96,
-        "l": 50
+        "h": 258,
+        "s": 93,
+        "l": 76
       },
-      "usage": "Accent and highlight color"
+      "usage": "Accent color — top tier / horn"
     },
     "neutral": [
       {
@@ -475,7 +475,9 @@
     "siza": {
       "headingFont": "Plus Jakarta Sans",
       "bodyFont": "DM Sans",
-      "monoFont": "IBM Plex Mono"
+      "monoFont": "IBM Plex Mono",
+      "accentColor": "#06B6D4",
+      "logoMark": "Sz lettermark + cyan 4-point spark"
     },
     "mcp-gateway": {
       "headingFont": "Instrument Sans",
