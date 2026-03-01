@@ -1,4 +1,4 @@
-import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
@@ -80,23 +80,36 @@ const ANVIL_PATH = 'M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z
 const ANVIL_MID = '<rect x="22" y="24" width="24" height="12" rx="2"';
 const ANVIL_BASE = '<rect x="16" y="40" width="38" height="14" rx="3"';
 
-const WORDMARK_TEXT = `<text x="78" y="30" fill="#7C3AED" font-size="20" font-family="'Space Grotesk', sans-serif" font-weight="700" letter-spacing="0.12em">FORGE</text>
-  <text x="78" y="52" fill="#7C3AED" font-size="20" font-family="'Space Grotesk', sans-serif" font-weight="700" letter-spacing="0.12em">SPACE</text>`;
+const jockeyB64 = readFileSync(join(root, "src", "fonts", "jockey-one.woff2")).toString("base64");
+const spaceGroteskB64 = readFileSync(join(root, "src", "fonts", "space-grotesk.woff")).toString("base64");
+
+const fontFaceJockey = `@font-face{font-family:'Jockey One';font-weight:400;src:url(data:font/woff2;base64,${jockeyB64}) format('woff2')}`;
+const fontFaceSpaceGrotesk = `@font-face{font-family:'Space Grotesk';font-weight:400;src:url(data:font/woff;base64,${spaceGroteskB64}) format('woff')}`;
+
+const LOGO_FONT_DEFS = `<defs><style>${fontFaceJockey}</style></defs>`;
+
+const wordmarkText = (fill) =>
+  `<text x="78" y="30" fill="${fill}" font-size="20" font-family="'Jockey One', sans-serif" letter-spacing="0.12em">FORGE</text>
+  <text x="78" y="52" fill="${fill}" font-size="20" font-family="'Jockey One', sans-serif" letter-spacing="0.12em">SPACE</text>`;
+
+const WORDMARK_TEXT = wordmarkText("#7C3AED");
+
+const wordmarkSvg = (anvilFills, textFill) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="64" viewBox="0 0 200 64" fill="none">
+  ${LOGO_FONT_DEFS}
+  <path d="${ANVIL_PATH}" fill="${anvilFills[0]}"/>
+  ${ANVIL_MID} fill="${anvilFills[1]}"/>
+  ${ANVIL_BASE} fill="${anvilFills[2]}"/>
+  ${wordmarkText(textFill)}
+</svg>`;
 
 const logo = {
-  svg: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="64" viewBox="0 0 200 64" fill="none">
-  <path d="${ANVIL_PATH}" fill="#F59E0B"/>
-  ${ANVIL_MID} fill="#3B82F6"/>
-  ${ANVIL_BASE} fill="#7C3AED"/>
-  ${WORDMARK_TEXT}
-</svg>`,
+  svg: wordmarkSvg(["#F59E0B", "#3B82F6", "#7C3AED"], "#7C3AED"),
   variants: {
-    wordmark: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="64" viewBox="0 0 200 64" fill="none">
-  <path d="${ANVIL_PATH}" fill="#F59E0B"/>
-  ${ANVIL_MID} fill="#3B82F6"/>
-  ${ANVIL_BASE} fill="#7C3AED"/>
-  ${WORDMARK_TEXT}
-</svg>`,
+    wordmark: wordmarkSvg(["#F59E0B", "#3B82F6", "#7C3AED"], "#7C3AED"),
+    "wordmark-white": wordmarkSvg(["#FFFFFF", "#FFFFFF", "#FFFFFF"], "#FFFFFF"),
+    "wordmark-blue": wordmarkSvg(["#3B82F6", "#3B82F6", "#3B82F6"], "#3B82F6"),
+    "wordmark-purple": wordmarkSvg(["#7C3AED", "#7C3AED", "#7C3AED"], "#7C3AED"),
     monogram: `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
   <path d="${ANVIL_PATH}" fill="#F59E0B"/>
   ${ANVIL_MID} fill="#3B82F6"/>
@@ -114,6 +127,17 @@ const logo = {
 </svg>`,
   },
 };
+
+const identityPath = join(root, "brand", "identity.json");
+let existingCreatedAt;
+if (existsSync(identityPath)) {
+  try {
+    const existing = JSON.parse(readFileSync(identityPath, "utf-8"));
+    existingCreatedAt = existing.createdAt;
+  } catch (err) {
+    // File exists but unreadable - will use new timestamp
+  }
+}
 
 const identity = {
   id: "brand_forgespace_001",
@@ -194,7 +218,7 @@ const identity = {
       monoFont: "IBM Plex Mono",
     },
   },
-  createdAt: new Date().toISOString(),
+  createdAt: existingCreatedAt ?? new Date().toISOString(),
 };
 
 console.log(
@@ -252,7 +276,7 @@ mkdirSync(logosDir, { recursive: true });
 for (const [name, svg] of Object.entries(logo.variants)) {
   writeFileSync(join(logosDir, `${name}.svg`), svg);
 }
-console.log("  Wrote 4 logo SVGs to public/logos/");
+console.log(`  Wrote ${Object.keys(logo.variants).length} logo SVGs to public/logos/`);
 
 const faviconsDir = join(root, "public", "favicons");
 mkdirSync(faviconsDir, { recursive: true });
@@ -261,55 +285,66 @@ console.log("  Wrote favicon to public/favicons/");
 
 const ogDir = join(root, "public", "og");
 mkdirSync(ogDir, { recursive: true });
-const anvilWhite = `<path d="${ANVIL_PATH}" fill="white"/>\n    ${ANVIL_MID} fill="white"/>\n    ${ANVIL_BASE} fill="white"/>`;
+
+const ogFonts = `<style>${fontFaceJockey}${fontFaceSpaceGrotesk}</style>`;
+
+// Centered anvil monogram — cx/cy = visual center on canvas
+const anvilMark = (s, cx, cy) => {
+  const tx = cx - 35.5 * s;
+  const ty = cy - 31 * s;
+  return `<g transform="translate(${tx}, ${ty}) scale(${s})">
+    <path d="${ANVIL_PATH}" fill="white"/>
+    ${ANVIL_MID} fill="white" opacity="0.88"/>
+    ${ANVIL_BASE} fill="white" opacity="0.76"/>
+  </g>`;
+};
+
+const ogBg = (w, h) => `<defs>
+    ${ogFonts}
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4c1d95"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:white;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="url(#bg)"/>
+  <rect width="${w}" height="${h}" fill="url(#glow)"/>`;
+
 writeFileSync(
   join(ogDir, "default.svg"),
   `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7c3aed"/>
-      <stop offset="100%" style="stop-color:#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <g transform="translate(504, 60) scale(3)">
-    ${anvilWhite}
-  </g>
-  <text x="600" y="315" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${BRAND_NAME}</text>
-  <text x="600" y="375" fill="white" font-size="28" font-family="'Space Grotesk', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.8">${TAGLINE}</text>
+  ${ogBg(1200, 630)}
+  ${anvilMark(2.8, 600, 185)}
+  <text x="600" y="330" fill="white" font-size="52" font-family="'Jockey One', sans-serif" text-anchor="middle" letter-spacing="0.2em">FORGE SPACE</text>
+  <text x="600" y="385" fill="white" font-size="20" font-family="'Space Grotesk', sans-serif" text-anchor="middle" opacity="0.6">${TAGLINE}</text>
+  <text x="1160" y="604" fill="white" font-size="13" font-family="'Space Grotesk', sans-serif" text-anchor="end" opacity="0.3">forgespace.co</text>
+  <rect y="624" width="1200" height="6" fill="#F59E0B" opacity="0.35"/>
 </svg>`
 );
+
 writeFileSync(
   join(ogDir, "article.svg"),
   `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7c3aed"/>
-      <stop offset="100%" style="stop-color:#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <g transform="translate(1070, 25) scale(1.2)">
-    ${anvilWhite}
-  </g>
-  <text x="600" y="280" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">Brand Guide</text>
-  <text x="600" y="340" fill="white" font-size="24" font-family="'Space Grotesk', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.7">${BRAND_NAME}</text>
+  ${ogBg(1200, 630)}
+  <text x="600" y="250" fill="white" font-size="56" font-family="'Jockey One', sans-serif" text-anchor="middle">Brand Guide</text>
+  <text x="600" y="345" fill="white" font-size="24" font-family="'Jockey One', sans-serif" text-anchor="middle" letter-spacing="0.3em" opacity="0.5">FORGE SPACE</text>
+  <text x="1160" y="604" fill="white" font-size="13" font-family="'Space Grotesk', sans-serif" text-anchor="end" opacity="0.3">forgespace.co</text>
+  <rect y="624" width="1200" height="6" fill="#F59E0B" opacity="0.35"/>
 </svg>`
 );
+
 writeFileSync(
   join(ogDir, "social.svg"),
   `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7c3aed"/>
-      <stop offset="100%" style="stop-color:#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="1200" fill="url(#bg)"/>
-  <g transform="translate(504, 280) scale(3)">
-    ${anvilWhite}
-  </g>
-  <text x="600" y="580" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${BRAND_NAME}</text>
+  ${ogBg(1200, 1200)}
+  ${anvilMark(3.5, 600, 420)}
+  <text x="600" y="570" fill="white" font-size="56" font-family="'Jockey One', sans-serif" text-anchor="middle" letter-spacing="0.2em">FORGE SPACE</text>
+  <text x="600" y="635" fill="white" font-size="20" font-family="'Space Grotesk', sans-serif" text-anchor="middle" opacity="0.6">${TAGLINE}</text>
+  <text x="600" y="1160" fill="white" font-size="13" font-family="'Space Grotesk', sans-serif" text-anchor="middle" opacity="0.3">forgespace.co</text>
+  <rect y="1194" width="1200" height="6" fill="#F59E0B" opacity="0.35"/>
 </svg>`
 );
 console.log("  Wrote 3 OG images to public/og/");
