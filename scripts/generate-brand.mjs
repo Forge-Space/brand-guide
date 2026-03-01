@@ -43,9 +43,9 @@ const SCALE_RATIO = "major-third";
 const TAGLINE = "The developer tools ecosystem.";
 
 const PINNED_FONTS = {
-  headingFont: "Outfit",
-  bodyFont: "Inter",
-  monoFont: "JetBrains Mono",
+  headingFont: "Space Grotesk",
+  bodyFont: "IBM Plex Sans",
+  monoFont: "IBM Plex Mono",
 };
 
 const PINNED_COLORS = {
@@ -80,8 +80,8 @@ const ANVIL_PATH = 'M14 8 h46 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H14 L8 14 L14 8 Z
 const ANVIL_MID = '<rect x="22" y="24" width="24" height="12" rx="2"';
 const ANVIL_BASE = '<rect x="16" y="40" width="38" height="14" rx="3"';
 
-const WORDMARK_TEXT = `<text x="78" y="30" fill="#7C3AED" font-size="20" font-family="'Outfit', sans-serif" font-weight="700" letter-spacing="0.12em">FORGE</text>
-  <text x="78" y="52" fill="#7C3AED" font-size="20" font-family="'Outfit', sans-serif" font-weight="700" letter-spacing="0.12em">SPACE</text>`;
+const WORDMARK_TEXT = `<text x="78" y="30" fill="#7C3AED" font-size="20" font-family="'Space Grotesk', sans-serif" font-weight="700" letter-spacing="0.12em">FORGE</text>
+  <text x="78" y="52" fill="#7C3AED" font-size="20" font-family="'Space Grotesk', sans-serif" font-weight="700" letter-spacing="0.12em">SPACE</text>`;
 
 const logo = {
   svg: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="64" viewBox="0 0 200 64" fill="none">
@@ -182,6 +182,18 @@ const identity = {
     },
   },
   logo,
+  subBrands: {
+    siza: {
+      headingFont: "Plus Jakarta Sans",
+      bodyFont: "DM Sans",
+      monoFont: "IBM Plex Mono",
+    },
+    "mcp-gateway": {
+      headingFont: "Instrument Sans",
+      bodyFont: "Source Sans 3",
+      monoFont: "IBM Plex Mono",
+    },
+  },
   createdAt: new Date().toISOString(),
 };
 
@@ -263,8 +275,8 @@ writeFileSync(
   <g transform="translate(504, 60) scale(3)">
     ${anvilWhite}
   </g>
-  <text x="600" y="315" fill="white" font-size="56" font-family="'Outfit', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${BRAND_NAME}</text>
-  <text x="600" y="375" fill="white" font-size="28" font-family="'Outfit', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.8">${TAGLINE}</text>
+  <text x="600" y="315" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${BRAND_NAME}</text>
+  <text x="600" y="375" fill="white" font-size="28" font-family="'Space Grotesk', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.8">${TAGLINE}</text>
 </svg>`
 );
 writeFileSync(
@@ -280,8 +292,8 @@ writeFileSync(
   <g transform="translate(1070, 25) scale(1.2)">
     ${anvilWhite}
   </g>
-  <text x="600" y="280" fill="white" font-size="56" font-family="'Outfit', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">Brand Guide</text>
-  <text x="600" y="340" fill="white" font-size="24" font-family="'Outfit', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.7">${BRAND_NAME}</text>
+  <text x="600" y="280" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">Brand Guide</text>
+  <text x="600" y="340" fill="white" font-size="24" font-family="'Space Grotesk', sans-serif" font-weight="400" text-anchor="middle" dominant-baseline="central" opacity="0.7">${BRAND_NAME}</text>
 </svg>`
 );
 writeFileSync(
@@ -297,7 +309,7 @@ writeFileSync(
   <g transform="translate(504, 280) scale(3)">
     ${anvilWhite}
   </g>
-  <text x="600" y="580" fill="white" font-size="56" font-family="'Outfit', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${BRAND_NAME}</text>
+  <text x="600" y="580" fill="white" font-size="56" font-family="'Space Grotesk', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">${BRAND_NAME}</text>
 </svg>`
 );
 console.log("  Wrote 3 OG images to public/og/");

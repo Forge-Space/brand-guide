@@ -1,20 +1,21 @@
 # Changelog
 
-## [0.2.0] - 2026-02-28
+## [0.2.0] - 2026-03-01
 
 ### Changed
-- Replaced auto-generated circle+S logos with the real Siza anvil mark
-  - Wordmark: anvil + "SIZA" text (Outfit 800)
-  - Monogram: standalone anvil mark
-  - Abstract: outline anvil with decorative elements
-  - Icon: compact anvil for favicons
-- Updated all OG images to use the anvil mark
-- Updated favicons to use the anvil icon
+- **Rebrand: Siza → Forge Space** — site now represents the parent organization
+  - Brand name, tagline ("The developer tools ecosystem."), color name ("Forge Purple")
+  - All 10 pages updated with Forge Space identity
+- Stacked two-line wordmark (FORGE / SPACE) with Outfit 700, 20px, 0.12em letter-spacing
+- 7 logo variants: wordmark, monogram, icon, abstract, wordmark-blue, wordmark-purple, wordmark-white
+- Anvil favicon and 3 OG images with Flame Rise mark
+- `generate-brand.mjs` inlines anvil SVGs with WORDMARK_TEXT constant
 
 ### Added
-- Forge Space organization identity in brand/identity.json
-- "by Forge Space" attribution in OG images, homepage, and footer
-- Logo description documenting the anvil mark design language
+- 3 new pages: concepts (logo system), palettes (color combos), compare (brand comparison)
+- Product Brands section on overview with Siza as sub-brand (mark TBD)
+- 3 tint wordmark variants (blue, purple, white) for monochrome contexts
+- 39 concept SVGs archived in public/logos/concepts/
 
 ## [0.1.0] - 2026-02-28
 
