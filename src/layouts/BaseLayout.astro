@@ -4,9 +4,10 @@ import "@/styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  wide?: boolean;
 }
 
-const { title, description = "Forge Space brand identity guidelines — design tokens, assets, and usage rules" } = Astro.props;
+const { title, description = "Forge Space brand identity guidelines — design tokens, assets, and usage rules", wide = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 const nav = [
@@ -17,6 +18,7 @@ const nav = [
   { href: "/tokens/", label: "Tokens", icon: "{ }" },
   { href: "/assets/", label: "Assets", icon: "↓" },
   { href: "/usage/", label: "Usage", icon: "✓" },
+  { href: "/explore/", label: "Explore", icon: "✦" },
 ];
 
 function isActive(href: string) {
@@ -35,7 +37,7 @@ function isActive(href: string) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Jockey+One&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Jockey+One&family=Manrope:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Sora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <meta property="og:title" content={`${title} — Forge Space Brand Guide`} />
@@ -102,7 +104,7 @@ function isActive(href: string) {
 
       <!-- Main content -->
       <main class="flex-1 min-w-0 p-8 md:p-12 lg:p-16 pb-24 md:pb-16">
-        <div class="max-w-4xl">
+        <div class={wide ? "max-w-7xl" : "max-w-4xl"}>
           <slot />
         </div>
       </main>

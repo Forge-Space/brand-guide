@@ -1,0 +1,422 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+const conceptsDir = join(process.cwd(), "public", "logos", "concepts");
+const load = (file: string) => readFileSync(join(conceptsDir, file), "utf-8");
+
+const anvilForms = [
+  { id: "AF1", name: "Tricolor", desc: "Purple top, blue mid, amber base — inverted Flame Rise", file: "af1-tricolor.svg",
+    colors: ["#7C3AED", "#3B82F6", "#F59E0B"] },
+  { id: "AF2", name: "Forge Heat", desc: "Vertical gradient blend across all tiers", file: "af2-forge-heat.svg",
+    colors: ["#7C3AED", "#3B82F6", "#F59E0B"] },
+  { id: "AF3", name: "Ember Top", desc: "Amber horn/top, purple body and base", file: "af3-ember-top.svg",
+    colors: ["#F59E0B", "#7C3AED", "#7C3AED"] },
+  { id: "AF4", name: "Diagonal", desc: "Diagonal gradient blend across shape", file: "af4-diagonal.svg",
+    colors: ["#7C3AED", "#3B82F6", "#F59E0B"] },
+  { id: "AF5", name: "Blue Core", desc: "Purple top and base, blue center tier", file: "af5-blue-core.svg",
+    colors: ["#7C3AED", "#3B82F6", "#7C3AED"] },
+  { id: "AF6", name: "Flame Rise", desc: "Amber top, blue mid, purple base — current production", file: "af6-flame-rise.svg",
+    colors: ["#F59E0B", "#3B82F6", "#7C3AED"] },
+];
+
+const gradients = [
+  { id: "GRD1", name: "Hero", desc: "Purple-blue horizontal", file: "af-grd1-hero.svg" },
+  { id: "GRD2", name: "Layered", desc: "Per-bar individual gradient", file: "af-grd2-layered.svg" },
+  { id: "GRD3", name: "Warm", desc: "Purple-amber diagonal", file: "af-grd3-warm.svg" },
+  { id: "GRD4", name: "Radial", desc: "Center-out radial blend", file: "af-grd4-radial.svg" },
+  { id: "GRD5", name: "Cool-Warm", desc: "Blue to amber vertical", file: "af-grd5-cool-warm.svg" },
+  { id: "GRD6", name: "Split", desc: "Solid purple top, gradient body", file: "af-grd6-split.svg" },
+];
+
+const monochromes = [
+  { id: "HRC2", name: "Amber", desc: "Warm amber shades", file: "af-hrc2-amber-tint.svg", accent: "#F59E0B" },
+  { id: "HRC4", name: "Blue", desc: "Cool blue shades", file: "af-hrc4-blue-tint.svg", accent: "#3B82F6" },
+  { id: "HRC6", name: "Purple", desc: "Brand purple shades", file: "af-hrc6-purple-tint.svg", accent: "#7C3AED" },
+];
+
+const hierarchy = [
+  { id: "HRC1", name: "Steep", desc: "Strong top, faded tiers", file: "af-hrc1-steep.svg" },
+  { id: "HRC3", name: "Two-Step", desc: "Amber top, faded bars", file: "af-hrc3-twostep.svg" },
+  { id: "HRC5", name: "Reverse", desc: "Faded top, bold base", file: "af-hrc5-reverse.svg" },
+  { id: "DEP1", name: "Fade", desc: "Opacity fades per tier", file: "af-dep1-fade.svg" },
+  { id: "DEP4", name: "Inverse", desc: "Faded top, solid base", file: "af-dep4-inverse.svg" },
+  { id: "DEP6", name: "Gentle", desc: "Subtle opacity steps", file: "af-dep6-gentle.svg" },
+];
+
+const effects = [
+  { id: "DEP2", name: "Amber Shadow", desc: "Amber glow drop shadow", file: "af-dep2-amber-shadow.svg" },
+  { id: "DEP3", name: "Highlight", desc: "Top-light on each bar", file: "af-dep3-highlight.svg" },
+  { id: "DEP5", name: "Blue Shadow", desc: "Blue glow drop shadow", file: "af-dep5-blue-shadow.svg" },
+];
+
+const fonts = [
+  { name: "Space Grotesk", family: "'Space Grotesk'", weight: "700", style: "geometric-tech" },
+  { name: "Outfit", family: "'Outfit'", weight: "700", style: "modern-clean" },
+  { name: "Sora", family: "'Sora'", weight: "700", style: "geometric-bold" },
+  { name: "Manrope", family: "'Manrope'", weight: "800", style: "rounded-friendly" },
+  { name: "Plus Jakarta Sans", family: "'Plus Jakarta Sans'", weight: "800", style: "contemporary" },
+  { name: "Inter", family: "'Inter'", weight: "700", style: "neutral-universal" },
+  { name: "Bricolage Grotesque", family: "'Bricolage Grotesque'", weight: "800", style: "editorial-bold" },
+  { name: "Instrument Sans", family: "'Instrument Sans'", weight: "700", style: "sharp-minimal" },
+  { name: "JetBrains Mono", family: "'JetBrains Mono'", weight: "700", style: "mono-developer" },
+  { name: "Space Mono", family: "'Space Mono'", weight: "700", style: "mono-geometric" },
+];
+
+const sizes = [64, 48, 32, 24, 16] as const;
+
+const backgrounds = [
+  { name: "App Dark", cls: "bg-surface-0" },
+  { name: "Surface", cls: "bg-surface-2" },
+  { name: "White", cls: "bg-white" },
+  { name: "Gradient", cls: "", style: "background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)" },
+  { name: "Black", cls: "bg-black" },
+];
+---
+
+<BaseLayout title="Explore" wide>
+  <header class="mb-16">
+    <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4">Logo Exploration</h1>
+    <p class="text-text-secondary max-w-2xl text-lg">
+      Anvil form variations — color schemes, gradients, monochromes, opacity treatments, and effects.
+      Each concept shown as icon, wordmark, across backgrounds, and at multiple sizes.
+    </p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 1. PRIMARY COLOR SCHEMES (AF1-AF6) -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Color Schemes</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      Six color arrangements on the 3-tier notch anvil shape.
+    </p>
+
+    <div class="space-y-10">
+      {anvilForms.map((af) => (
+        <div class="border border-white/5 rounded-2xl overflow-hidden">
+          <!-- Header -->
+          <div class="bg-surface-1 px-6 py-4 flex items-center gap-4 border-b border-white/5">
+            <span class="text-xs font-mono text-brand/70 bg-brand/10 px-2 py-0.5 rounded">{af.id}</span>
+            <span class="font-heading font-bold">{af.name}</span>
+            <span class="text-xs text-text-muted">{af.desc}</span>
+            {af.id === "AF6" && <span class="text-[10px] font-mono bg-green-500/15 text-green-400 px-2 py-0.5 rounded ml-auto">CURRENT</span>}
+          </div>
+
+          <div class="p-6 space-y-6">
+            <!-- Icon + Wordmark side by side on dark and light -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-surface-2 rounded-xl p-8 flex items-center justify-center gap-6 min-h-[120px]">
+                <div class="w-14 h-14 shrink-0" set:html={load(af.file)} />
+                <div class="flex flex-col items-start">
+                  <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; color: ${af.colors[2]}`}>FORGE</span>
+                  <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; color: ${af.colors[2]}; margin-top: -4px`}>SPACE</span>
+                </div>
+              </div>
+              <div class="bg-white rounded-xl p-8 flex items-center justify-center gap-6 min-h-[120px]">
+                <div class="w-14 h-14 shrink-0" set:html={load(af.file)} />
+                <div class="flex flex-col items-start">
+                  <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; color: ${af.colors[2]}`}>FORGE</span>
+                  <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; color: ${af.colors[2]}; margin-top: -4px`}>SPACE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Color swatches -->
+            <div class="flex items-center gap-3">
+              {af.colors.map((c, i) => (
+                <div class="flex items-center gap-1.5">
+                  <div class="w-4 h-4 rounded-sm" style={`background: ${c}`} />
+                  <span class="text-[10px] font-mono text-text-muted">{c}</span>
+                  <span class="text-[10px] text-text-muted/50">{["top", "mid", "base"][i]}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Size scaling -->
+            <div class="flex items-end gap-5">
+              {sizes.map(s => (
+                <div class="text-center">
+                  <div style={`width: ${s}px; height: ${s}px`} set:html={load(af.file)} />
+                  <span class="text-[8px] text-text-muted font-mono mt-1 block">{s}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 2. GRADIENT TREATMENTS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Gradient Treatments</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      Smooth gradient blends applied to the anvil form.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      {gradients.map((g) => (
+        <div class="group">
+          <div class="bg-surface-2 rounded-xl overflow-hidden border border-white/5 hover:border-brand/30 transition-colors">
+            <div class="p-8 flex items-center justify-center min-h-[130px]">
+              <div class="w-16 h-16" set:html={load(g.file)} />
+            </div>
+            <div class="bg-white p-6 flex items-center justify-center min-h-[90px] border-t border-white/5">
+              <div class="w-12 h-12" set:html={load(g.file)} />
+            </div>
+          </div>
+          <div class="mt-2 flex items-center gap-1.5">
+            <span class="text-[10px] font-mono text-brand/60">{g.id}</span>
+            <span class="text-xs font-medium">{g.name}</span>
+          </div>
+          <p class="text-[10px] text-text-muted">{g.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 3. MONOCHROME TINTS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Monochrome Tints</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      Single-hue treatments — for restricted color contexts or sub-brand use.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {monochromes.map((m) => (
+        <div>
+          <div class="bg-surface-2 rounded-xl border border-white/5 overflow-hidden">
+            <div class="p-10 flex items-center justify-center gap-5">
+              <div class="w-14 h-14 shrink-0" set:html={load(m.file)} />
+              <div class="flex flex-col items-start">
+                <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.08em; color: ${m.accent}`}>FORGE</span>
+                <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.08em; color: ${m.accent}; margin-top: -4px`}>SPACE</span>
+              </div>
+            </div>
+            <div class="bg-white p-8 flex items-center justify-center gap-5 border-t border-white/5">
+              <div class="w-12 h-12 shrink-0" set:html={load(m.file)} />
+              <div class="flex flex-col items-start">
+                <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.08em; color: ${m.accent}`}>FORGE</span>
+                <span style={`font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.08em; color: ${m.accent}; margin-top: -3px`}>SPACE</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 flex items-center gap-1.5">
+            <span class="text-[10px] font-mono text-brand/60">{m.id}</span>
+            <span class="text-xs font-medium">{m.name}</span>
+            <div class="w-3 h-3 rounded-sm ml-auto" style={`background: ${m.accent}`} />
+          </div>
+          <p class="text-[10px] text-text-muted">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- White on backgrounds -->
+    <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="rounded-xl p-8 flex items-center justify-center" style="background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)">
+        <div class="w-14 h-14" set:html={load("af-white.svg")} />
+      </div>
+      <div class="rounded-xl p-8 flex items-center justify-center bg-black">
+        <div class="w-14 h-14" set:html={load("af-white.svg")} />
+      </div>
+      <div class="rounded-xl p-8 flex items-center justify-center" style="background: #7C3AED">
+        <div class="w-14 h-14" set:html={load("af-white.svg")} />
+      </div>
+    </div>
+    <p class="text-[10px] text-text-muted mt-2">White — reversed for dark/gradient backgrounds</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 4. OPACITY HIERARCHY -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Opacity & Hierarchy</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      Opacity variations that create visual weight and depth.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+      {hierarchy.map((h) => (
+        <div class="group">
+          <div class="bg-surface-2 rounded-xl p-6 flex items-center justify-center min-h-[100px] border border-white/5 hover:border-brand/30 transition-colors">
+            <div class="w-14 h-14" set:html={load(h.file)} />
+          </div>
+          <div class="mt-2">
+            <div class="flex items-center gap-1">
+              <span class="text-[10px] font-mono text-brand/60">{h.id}</span>
+              <span class="text-xs font-medium">{h.name}</span>
+            </div>
+            <p class="text-[10px] text-text-muted">{h.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 5. EFFECTS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Effects</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      Shadow and highlight treatments for elevated contexts.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {effects.map((e) => (
+        <div>
+          <div class="bg-surface-2 rounded-xl p-10 flex items-center justify-center min-h-[130px] border border-white/5">
+            <div class="w-16 h-16" set:html={load(e.file)} />
+          </div>
+          <div class="mt-2 flex items-center gap-1.5">
+            <span class="text-[10px] font-mono text-brand/60">{e.id}</span>
+            <span class="text-xs font-medium">{e.name}</span>
+          </div>
+          <p class="text-[10px] text-text-muted">{e.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 6. TYPOGRAPHY PAIRINGS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Typography Pairings</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      The anvil icon paired with different typefaces. Using AF6 (Flame Rise) as reference.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {fonts.map((f) => (
+        <div class="bg-surface-2 rounded-xl border border-white/5 overflow-hidden hover:border-brand/30 transition-colors">
+          <div class="p-6 flex items-center gap-5">
+            <div class="w-12 h-12 shrink-0" set:html={load("af6-flame-rise.svg")} />
+            <div class="flex flex-col items-start min-w-0">
+              <span style={`font-family: ${f.family}, sans-serif; font-weight: ${f.weight}; font-size: 20px; letter-spacing: 0.06em; color: #7C3AED`}>FORGE SPACE</span>
+              <span class="text-[10px] font-mono text-text-muted mt-0.5">{f.name} · {f.style}</span>
+            </div>
+          </div>
+          <div class="bg-white px-6 py-4 flex items-center gap-4 border-t border-white/5">
+            <div class="w-8 h-8 shrink-0" set:html={load("af6-flame-rise.svg")} />
+            <span style={`font-family: ${f.family}, sans-serif; font-weight: ${f.weight}; font-size: 14px; letter-spacing: 0.06em; color: #7C3AED`}>FORGE SPACE</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 7. BACKGROUND MATRIX -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">Background Matrix</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      Top 3 color schemes tested across all surfaces.
+    </p>
+
+    {(["af3-ember-top.svg", "af6-flame-rise.svg", "af-hrc6-purple-tint.svg"] as const).map((file) => (
+      <div class="mb-6">
+        <span class="text-[10px] font-mono text-text-muted mb-2 block">{file.replace(".svg", "")}</span>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {backgrounds.map(bg => (
+            <div class={`rounded-xl p-6 flex items-center justify-center min-h-[90px] ${bg.cls}`} style={bg.style ?? ""}>
+              <div class="w-12 h-12" set:html={load(file)} />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- 8. IN-CONTEXT PREVIEWS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="mb-24">
+    <h2 class="font-heading text-2xl font-bold mb-2">In Context</h2>
+    <p class="text-text-secondary text-sm mb-8">
+      How the anvil appears in real UI contexts — using AF6 Flame Rise.
+    </p>
+
+    <div class="space-y-4">
+      <!-- Navbar dark -->
+      <div class="bg-surface-1 rounded-xl px-6 py-4 flex items-center gap-4 border border-white/5">
+        <div class="w-8 h-8" set:html={load("af6-flame-rise.svg")} />
+        <span class="font-heading font-bold text-sm">Forge Space</span>
+        <div class="flex-1" />
+        <span class="text-xs text-text-muted">Dashboard</span>
+        <span class="text-xs text-text-muted">Generate</span>
+        <span class="text-xs text-text-muted">Settings</span>
+      </div>
+
+      <!-- Navbar light -->
+      <div class="bg-white rounded-xl px-6 py-4 flex items-center gap-4">
+        <div class="w-8 h-8" set:html={load("af6-flame-rise.svg")} />
+        <span class="font-heading font-bold text-sm text-gray-900">Forge Space</span>
+        <div class="flex-1" />
+        <span class="text-xs text-gray-500">Dashboard</span>
+        <span class="text-xs text-gray-500">Generate</span>
+        <span class="text-xs text-gray-500">Settings</span>
+      </div>
+
+      <!-- Hero -->
+      <div class="rounded-xl p-12 flex flex-col items-center justify-center text-center" style="background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12" set:html={load("af-white.svg")} />
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: 0.06em; color: white">FORGE SPACE</span>
+        </div>
+        <span class="text-sm text-white/70">Build better, ship faster.</span>
+      </div>
+
+      <!-- Footer -->
+      <div class="bg-black rounded-xl px-8 py-6 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-6 h-6" set:html={load("af6-flame-rise.svg")} />
+          <span class="text-xs text-white/50 font-mono">Forge Space</span>
+        </div>
+        <span class="text-xs text-white/30">2026</span>
+      </div>
+
+      <!-- App icons -->
+      <div class="flex gap-5 mt-4">
+        {([
+          { bg: "bg-surface-2 border border-white/5", label: "Dark" },
+          { bg: "", style: "background: #7C3AED", label: "Purple" },
+          { bg: "", style: "background: #F59E0B", label: "Amber" },
+          { bg: "bg-white", label: "Light" },
+        ] as const).map((app) => (
+          <div class="text-center">
+            <div class={`w-16 h-16 rounded-2xl flex items-center justify-center p-3 ${app.bg}`} style={(app as any).style ?? ""}>
+              <div class={`w-10 h-10 ${app.label === "Purple" || app.label === "Amber" ? "[&_path]:!fill-white [&_rect]:!fill-white" : ""}`} set:html={load(app.label === "Light" ? "af6-flame-rise.svg" : app.label === "Purple" || app.label === "Amber" ? "af-white.svg" : "af6-flame-rise.svg")} />
+            </div>
+            <span class="text-[9px] text-text-muted font-mono mt-2 block">{app.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CURRENT PRODUCTION REFERENCE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="pt-8 border-t border-white/10">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6 font-mono">Current Production</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-surface-2 rounded-xl p-8 flex items-center justify-center min-h-[120px] border border-white/5">
+        <img src="/logos/icon.svg" alt="Current icon" class="w-16 h-16" />
+      </div>
+      <div class="bg-surface-2 rounded-xl p-8 flex items-center justify-center min-h-[120px] border border-white/5">
+        <img src="/logos/wordmark.svg" alt="Current wordmark" class="max-w-[200px]" />
+      </div>
+    </div>
+    <p class="text-[10px] text-text-muted mt-2">
+      AF6 Flame Rise + V4 notch shape + Jockey One wordmark — the current production logo.
+    </p>
+  </section>
+</BaseLayout>
