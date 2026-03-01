@@ -1,6 +1,10 @@
-# Forge Space Brand Guide
-
-Brand identity guidelines, design tokens, and assets for [Forge Space](https://forgespace.co) — the developer tools ecosystem.
+<div align="center">
+  <a href="https://forgespace.co">
+    <img src="https://brand.forgespace.co/logos/wordmark.svg" alt="Forge Space" height="48">
+  </a>
+  <h1>Brand Guide</h1>
+  <p>Brand identity guidelines, design tokens, and assets for the developer tools ecosystem.</p>
+</div>
 
 **Live:** [brand.forgespace.co](https://brand.forgespace.co)
 
