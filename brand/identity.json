@@ -4,6 +4,12 @@
   "tagline": "Generate. Integrate. Ship.",
   "industry": "technology",
   "style": "tech",
+  "organization": {
+    "name": "Forge Space",
+    "tagline": "Build better, ship faster.",
+    "url": "https://forgespace.co",
+    "mark": "Anvil — geometric L-shape representing a forge anvil. Two offset blocks: wider face (top) and narrower base (bottom-left)."
+  },
   "colors": {
     "primary": {
       "name": "Siza Purple",
@@ -460,12 +466,13 @@
     }
   },
   "logo": {
-    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"120\" viewBox=\"0 0 400 120\">\n  <circle cx=\"62\" cy=\"60\" r=\"42\" fill=\"#7c3bed\"/>\n  <text x=\"62\" y=\"60\" fill=\"white\" font-size=\"33.599999999999994\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">S</text>\n  <text x=\"120\" y=\"60\" fill=\"#7c3bed\" font-size=\"48\" font-family=\"'Outfit', sans-serif\" font-weight=\"600\" dominant-baseline=\"central\">Siza</text>\n</svg>",
+    "description": "The Siza anvil mark — a geometric L-shape representing a forge anvil. The wider top block is the face, the narrower bottom-left block is the base. Uses only #7C3AED (Forge Violet) or #FAFAFA (white). Never apply gradients, rotation, or drop shadows.",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"120\" viewBox=\"0 0 400 120\" fill=\"none\"><path d=\"M11 8h78a4 4 0 0 1 4 4v46a4 4 0 0 1-4 4H58v42a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z\" fill=\"#7C3AED\"/><text x=\"116\" y=\"76\" fill=\"#7C3AED\" font-size=\"72\" font-family=\"'Outfit', sans-serif\" font-weight=\"800\" letter-spacing=\"-0.02em\">SIZA</text></svg>",
     "variants": {
-      "wordmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"120\" viewBox=\"0 0 400 120\">\n  <circle cx=\"62\" cy=\"60\" r=\"42\" fill=\"#7c3bed\"/>\n  <text x=\"62\" y=\"60\" fill=\"white\" font-size=\"33.599999999999994\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">S</text>\n  <text x=\"120\" y=\"60\" fill=\"#7c3bed\" font-size=\"48\" font-family=\"'Outfit', sans-serif\" font-weight=\"600\" dominant-baseline=\"central\">Siza</text>\n</svg>",
-      "monogram": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\">\n  <polygon points=\"60,5 115,60 60,115 5,60\" fill=\"#7c3bed\"/>\n  <text x=\"60\" y=\"60\" fill=\"white\" font-size=\"56\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">S</text>\n</svg>",
-      "abstract": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\">\n  <line x1=\"10\" y1=\"60\" x2=\"50\" y2=\"30\" stroke=\"#7c3bed\" stroke-width=\"2\"/>\n  <line x1=\"50\" y1=\"30\" x2=\"90\" y2=\"50\" stroke=\"#7c3bed\" stroke-width=\"2\"/>\n  <line x1=\"90\" y1=\"50\" x2=\"110\" y2=\"20\" stroke=\"#7c3bed\" stroke-width=\"2\"/>\n  <circle cx=\"50\" cy=\"30\" r=\"4\" fill=\"#7c3bed\"/>\n  <circle cx=\"90\" cy=\"50\" r=\"4\" fill=\"#7c3bed\"/>\n</svg>",
-      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\">\n  <circle cx=\"32\" cy=\"32\" r=\"28\" fill=\"#7c3bed\"/>\n  <text x=\"32\" y=\"32\" fill=\"white\" font-size=\"32\" font-family=\"'Outfit', sans-serif\" font-weight=\"700\" text-anchor=\"middle\" dominant-baseline=\"central\">S</text>\n</svg>"
+      "wordmark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"120\" viewBox=\"0 0 400 120\" fill=\"none\"><path d=\"M11 8h78a4 4 0 0 1 4 4v46a4 4 0 0 1-4 4H58v42a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z\" fill=\"#7C3AED\"/><text x=\"116\" y=\"76\" fill=\"#7C3AED\" font-size=\"72\" font-family=\"'Outfit', sans-serif\" font-weight=\"800\" letter-spacing=\"-0.02em\">SIZA</text></svg>",
+      "monogram": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" fill=\"none\"><path d=\"M13 8h94a5 5 0 0 1 5 5v56a5 5 0 0 1-5 5H69v33a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5V13a5 5 0 0 1 5-5Z\" fill=\"#7C3AED\"/></svg>",
+      "abstract": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" fill=\"none\"><path d=\"M13 8h94a5 5 0 0 1 5 5v56a5 5 0 0 1-5 5H69v33a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5V13a5 5 0 0 1 5-5Z\" stroke=\"#7C3AED\" stroke-width=\"2.5\" fill=\"none\"/><path d=\"M30 38h30v30H30z\" fill=\"#7C3AED\" opacity=\"0.15\" rx=\"2\"/><circle cx=\"75\" cy=\"45\" r=\"8\" fill=\"#7C3AED\" opacity=\"0.25\"/><circle cx=\"45\" cy=\"90\" r=\"5\" fill=\"#7C3AED\" opacity=\"0.2\"/></svg>",
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" fill=\"none\"><path d=\"M7 4h50a3 3 0 0 1 3 3v30a3 3 0 0 1-3 3H37v17a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z\" fill=\"#7C3AED\"/></svg>"
     }
   },
   "createdAt": "2026-02-28T20:04:05.608Z"

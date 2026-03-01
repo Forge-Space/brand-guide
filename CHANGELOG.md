@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.0] - 2026-02-28
+
+### Changed
+- Replaced auto-generated circle+S logos with the real Siza anvil mark
+  - Wordmark: anvil + "SIZA" text (Outfit 800)
+  - Monogram: standalone anvil mark
+  - Abstract: outline anvil with decorative elements
+  - Icon: compact anvil for favicons
+- Updated all OG images to use the anvil mark
+- Updated favicons to use the anvil icon
+
+### Added
+- Forge Space organization identity in brand/identity.json
+- "by Forge Space" attribution in OG images, homepage, and footer
+- Logo description documenting the anvil mark design language
+
 ## [0.1.0] - 2026-02-28
 
 ### Added
