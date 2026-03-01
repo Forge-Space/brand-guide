@@ -8,7 +8,7 @@ Brand identity guidelines, design tokens, and assets for [Forge Space](https://f
 
 - **Logo** — 3-tier notch anvil (Flame Rise) with 7 variants: wordmark, monogram, icon, abstract, + 3 tint wordmarks
 - **Colors** — Forge Purple (#7C3AED), Forge Blue (#3B82F6), Forge Amber (#F59E0B), neutrals, semantic (WCAG validated)
-- **Typography** — Outfit / Inter / JetBrains Mono with major-third type scale
+- **Typography** — Space Grotesk / IBM Plex Sans / IBM Plex Mono with major-third type scale (sub-brand stacks for Siza and MCP-Gateway)
 - **Design Tokens** — CSS, JSON (W3C), Tailwind, Sass, React theme exports
 - **Spacing, Shadows, Borders, Motion, Gradients** — Full token coverage
 

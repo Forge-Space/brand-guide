@@ -26,13 +26,15 @@ npm run check        # Astro type checking
 - Never hardcode token values in components — always use CSS vars from tokens.css
 - `brand/identity.json` is the single source of truth
 - Astro components for static content, islands only for interactive features
-- Fonts: Outfit (headings), Inter (body), JetBrains Mono (mono)
+- Fonts: Space Grotesk (headings), IBM Plex Sans (body), IBM Plex Mono (mono)
+- Sub-brand fonts: Siza (Plus Jakarta Sans / DM Sans), MCP-Gateway (Instrument Sans / Source Sans 3)
 - Colors: primary #7c3aed (Forge Purple), secondary #3B82F6 (Forge Blue), accent #F59E0B (Forge Amber)
 
 ## Brand Hierarchy
 
 - **Forge Space** — parent organization brand (this guide)
-- **Siza** — product sub-brand under Forge Space (mark TBD, inherits Forge Space design tokens)
+- **Siza** — product sub-brand (Plus Jakarta Sans / DM Sans / IBM Plex Mono)
+- **MCP-Gateway** — product sub-brand (Instrument Sans / Source Sans 3 / IBM Plex Mono)
 
 ## Logo
 
