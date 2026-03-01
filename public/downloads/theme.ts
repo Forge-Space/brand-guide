@@ -19,9 +19,9 @@ export const theme = {
     "info": "#368fe7"
   },
   "fonts": {
-    "heading": "'Outfit', sans-serif",
-    "body": "'Inter', sans-serif",
-    "mono": "'JetBrains Mono', monospace"
+    "heading": "'Space Grotesk', sans-serif",
+    "body": "'IBM Plex Sans', sans-serif",
+    "mono": "'IBM Plex Mono', monospace"
   },
   "fontSizes": {
     "xs": "10.24px",

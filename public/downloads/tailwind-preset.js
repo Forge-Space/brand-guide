@@ -23,15 +23,15 @@ export default {
       },
       "fontFamily": {
         "heading": [
-          "Outfit",
+          "Space Grotesk",
           "sans-serif"
         ],
         "body": [
-          "Inter",
+          "IBM Plex Sans",
           "sans-serif"
         ],
         "mono": [
-          "JetBrains Mono",
+          "IBM Plex Mono",
           "monospace"
         ]
       },
