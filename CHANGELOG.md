@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0] - 2026-03-02
+
+### Added
+- **Repository Branding checklist** — `docs/REPOSITORY_BRANDING.md` with README header template, per-repo checklist, and Stitch + brand tokens guidance
+- Instructions for applying CDN wordmark (`https://brand.forgespace.co/logos/wordmark.svg`) across Forge Space repos
+- **Logo and assets: SVG, PNG, WEBP** — CDN serves all three formats (e.g. `wordmark.svg`, `wordmark.png`, `wordmark.webp`). Table of asset URLs in REPOSITORY_BRANDING.md.
+- **Raster export** — `npm run export:raster` (script `scripts/export-raster-assets.mjs`) generates PNG and WEBP from SVGs in `public/logos/`, `public/og/`, `public/favicons/` (sharp).
+- **core: apply-readme-branding-all.sh** — wrapper to run README branding on all Forge Space projects; supports `--dry-run`.
+- Stitch MCP section: how to generate UI components with Forge Space tokens (primary #7c3aed, secondary #3b82f6)
+
+### Changed
+- Version bump for branding sync release
+
 ## [0.3.1] - 2026-03-01
 
 ### Changed

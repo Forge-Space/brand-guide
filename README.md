@@ -8,6 +8,8 @@
 
 **Live:** [brand.forgespace.co](https://brand.forgespace.co)
 
+**Sync across repos:** [Repository Branding checklist](docs/REPOSITORY_BRANDING.md) — README header template, per-repo checklist, Stitch + brand tokens.
+
 ## What's Inside
 
 - **Logo** — 3-tier notch anvil (Flame Rise) with 7 variants: wordmark, monogram, icon, abstract, + 3 tint wordmarks
