@@ -1,0 +1,155 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import identity from "../../brand/identity.json";
+
+const siza = identity.subBrands?.siza ?? {};
+const sc = siza.primaryColor ?? "#8B5CF6";
+const cyan = siza.accentColor ?? "#06B6D4";
+const sizaTagline = siza.tagline ?? "AI-powered code generation";
+const sizaHeadingFont = siza.headingFont ?? "Plus Jakarta Sans";
+const sizaBodyFont = siza.bodyFont ?? "DM Sans";
+const sizaMonoFont = siza.monoFont ?? "IBM Plex Mono";
+
+const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <text x="3" y="48" font-family="'${sizaHeadingFont.replace(/"/g, "'")}', sans-serif" font-weight="700" font-size="42" fill="${sc}" letter-spacing="-3">Sz</text>
+  <path d="M56 38 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5-4 -4-1.5 4-1.5z" fill="${cyan}"/>
+</svg>`;
+
+const sizes = [64, 48, 32, 24, 20, 16] as const;
+const headingFont = identity.typography?.headingFont ?? "Sora";
+---
+
+<BaseLayout title="Siza" description="Siza sub-brand: logo, colors, typography, and usage. Sub-brand of Forge Space.">
+  <header class="mb-12">
+    <div class="flex items-center gap-3 mb-2">
+      <div class="w-3 h-3 rounded-full" style={`background: ${cyan}`} />
+      <h1 class="font-heading text-4xl font-bold">Siza</h1>
+    </div>
+    <p style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-text-secondary text-lg mt-1">{sizaTagline}</p>
+    <p class="text-text-secondary max-w-xl mt-4 text-sm">
+      "Sz" lettermark plus cyan 4-point spark. Sub-brand of Forge Space — clean, typographic, recognizable.
+      Same definition as on <a href="/explore/#siza" class="text-primary hover:underline">/explore</a>.
+    </p>
+  </header>
+
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Logo</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-surface-2 rounded-2xl border border-white/5 p-10 flex flex-col items-center justify-center">
+        <div class="w-24 h-24 mb-4" set:html={sizaIcon} />
+        <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold tracking-tight">Siza</div>
+        <div style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-[11px] text-text-secondary mt-0.5">{sizaTagline}</div>
+      </div>
+      <div class="bg-white rounded-2xl p-10 flex flex-col items-center justify-center">
+        <div class="w-24 h-24 mb-4" set:html={sizaIcon} />
+        <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold tracking-tight text-gray-900">Siza</div>
+        <div style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-[11px] text-gray-500 mt-0.5">{sizaTagline}</div>
+      </div>
+      <div class="rounded-2xl p-10 flex flex-col items-center justify-center" style={`background: ${sc}`}>
+        <div class="w-24 h-24 mb-4 [&_text]:!fill-white" set:html={sizaIcon} />
+        <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold tracking-tight text-white">Siza</div>
+        <div style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-[11px] text-white/70 mt-0.5">{sizaTagline}</div>
+      </div>
+    </div>
+
+    <h3 class="text-xs font-mono text-text-muted uppercase tracking-wider mt-10 mb-4">Size scaling</h3>
+    <div class="bg-surface-2 rounded-xl p-8 border border-white/5">
+      <div class="flex items-end gap-6">
+        {sizes.map((s) => (
+          <div class="text-center">
+            <div style={`width: ${s}px; height: ${s}px`} set:html={sizaIcon} />
+            <span class="text-[8px] text-text-muted font-mono mt-1 block">{s}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Colors</h2>
+    <div class="bg-surface-1 rounded-xl p-4 flex flex-wrap items-center gap-6 text-xs font-mono text-text-muted">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-lg" style={`background: ${sc}`} />
+        <div>
+          <span class="text-text-primary font-medium">Primary</span>
+          <span class="block">{sc}</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-lg" style={`background: ${cyan}`} />
+        <div>
+          <span class="text-text-primary font-medium">Cyan spark</span>
+          <span class="block">{cyan}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Typography</h2>
+    <div class="bg-surface-1 rounded-xl p-6 border border-white/5 space-y-4 text-sm">
+      <div>
+        <span class="text-text-muted font-mono uppercase tracking-wider">Heading</span>
+        <p style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold mt-1">Siza</p>
+      </div>
+      <div>
+        <span class="text-text-muted font-mono uppercase tracking-wider">Body</span>
+        <p style={`font-family: '${sizaBodyFont}', sans-serif`} class="mt-1">{sizaTagline}</p>
+      </div>
+      <div>
+        <span class="text-text-muted font-mono uppercase tracking-wider">Mono</span>
+        <p style={`font-family: '${sizaMonoFont}', monospace`} class="mt-1 font-mono text-xs">code, tokens</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Forge Space | Siza pairing</h2>
+    <p class="text-text-secondary text-sm mb-4 max-w-xl">
+      Parent and sub-brand paired. Use the Forge Space icon and wordmark first, then Siza when the product is in context.
+    </p>
+    <div class="space-y-4">
+      <div class="bg-surface-1 rounded-xl px-6 py-3 flex items-center gap-4 border border-white/5">
+        <img src="/logos/icon.svg" alt="" class="w-6 h-6 shrink-0" />
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm">Forge Space</span>
+        <span class="text-white/15">|</span>
+        <div class="w-6 h-6 shrink-0" set:html={sizaIcon} />
+        <span style={`font-family: '${sizaHeadingFont}', sans-serif`} class="font-semibold text-sm text-text-secondary">Siza</span>
+        <div class="flex-1" />
+        <span class="text-xs text-text-muted">Dashboard</span>
+        <span class="text-xs text-text-muted">Generate</span>
+      </div>
+      <div class="bg-white rounded-xl px-6 py-3 flex items-center gap-4">
+        <img src="/logos/icon.svg" alt="" class="w-6 h-6 shrink-0" />
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm text-gray-900">Forge Space</span>
+        <span class="text-gray-200">|</span>
+        <div class="w-6 h-6 shrink-0" set:html={sizaIcon} />
+        <span style={`font-family: '${sizaHeadingFont}', sans-serif`} class="font-semibold text-sm text-gray-500">Siza</span>
+        <div class="flex-1" />
+        <span class="text-xs text-gray-400">Dashboard</span>
+        <span class="text-xs text-gray-400">Generate</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-xs text-text-muted uppercase tracking-wider mb-6">Download assets</h2>
+    <p class="text-text-secondary text-sm mb-4 max-w-xl">
+      Siza icon (Sz lettermark + cyan spark) for use in product headers, favicons, or documentation.
+      Pair with the wordmark "Siza" in {sizaHeadingFont} as shown above.
+    </p>
+    <div class="flex flex-wrap items-center gap-4">
+      <a
+        href="/logos/siza-icon.svg"
+        download
+        class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg px-4 py-2.5 text-sm transition-colors"
+      >
+        <span class="text-text-muted">↓</span>
+        siza-icon.svg
+      </a>
+    </div>
+    <p class="text-xs text-text-muted mt-3">
+      Generated by <code class="bg-white/5 px-1.5 py-0.5 rounded">npm run generate</code>; same source as this page.
+    </p>
+  </section>
+</BaseLayout>

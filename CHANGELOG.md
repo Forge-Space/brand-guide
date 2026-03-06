@@ -1,23 +1,38 @@
 # Changelog
 
+## [0.6.0] - 2026-03-06
+
+### Added
+- **Siza branding page** — New `/siza/` page documents the Siza sub-brand (logo, colors, typography, Forge Space | Siza pairing)
+- **Siza assets download** — `/siza/` page includes `siza-icon.svg` (Sz lettermark + cyan spark), generated from `identity.subBrands.siza`
+- **Siza token export** — Generator writes `public/downloads/siza-tokens.css` from `identity.subBrands.siza.tokens`; package export `@forgespace/brand-guide/siza-tokens.css`
+- **DM Sans font** — `src/fonts/dm-sans.woff2` embedded in OG SVGs for brand-correct tagline rendering
+
+### Changed
+- **Modern Horn brand direction** — Unified monochrome purple palette: primary #8B5CF6, secondary #A78BFA, accent #6D28D9 (replaces tri-color Flame Rise amber/blue/purple). `identity.json` updated with `brandDirection`, all tokens and logo SVGs regenerated
+- **Logo system overhaul** — All 7 logo variants (wordmark, monogram, icon, abstract, tinted) use Modern Horn icon geometry and Sora typography (replacing Jockey One). Two-line wordmark (FORGE / SPACE) in Sora Bold 700, tracking-tight
+- **Open Graph images** — Dark blur frame treatment (#121214 base), horizontal lockup layout, WCAG-improved contrast. Brand typography: Sora for headings, DM Sans for tagline/body. Hero line and accent bar sourced from `identity.heroHeadline`
+- **Siza sub-brand contract** — `identity.subBrands.siza` now stores full canonical token values (colors, spacing, radius, effects, motion)
+- **Brand guide pages** — Updated explore.astro (production Brand System showcase), usage.astro (sub-brands, repository branding, logo variant selection), logo.astro (tinted wordmark variants)
+
 ## [0.5.0] - 2026-03-02
 
 ### Added
 - **Repository Branding checklist** — `docs/REPOSITORY_BRANDING.md` with README header template, per-repo checklist, and Stitch + brand tokens guidance
 - Instructions for applying CDN wordmark (`https://brand.forgespace.co/logos/wordmark.svg`) across Forge Space repos
-- **Logo and assets: SVG, PNG, WEBP** — CDN serves all three formats (e.g. `wordmark.svg`, `wordmark.png`, `wordmark.webp`). Table of asset URLs in REPOSITORY_BRANDING.md.
-- **Raster export** — `npm run export:raster` (script `scripts/export-raster-assets.mjs`) generates PNG and WEBP from SVGs in `public/logos/`, `public/og/`, `public/favicons/` (sharp).
-- **core: apply-readme-branding-all.sh** — wrapper to run README branding on all Forge Space projects; supports `--dry-run`.
-- Stitch MCP section: how to generate UI components with Forge Space tokens (primary #7c3aed, secondary #3b82f6)
+- **Logo and assets: SVG, PNG, WEBP** — CDN serves all three formats. Table of asset URLs in REPOSITORY_BRANDING.md
+- **Raster export** — `npm run export:raster` generates PNG and WEBP from SVGs via sharp
+- **core: apply-readme-branding-all.sh** — wrapper to run README branding on all Forge Space projects; supports `--dry-run`
 
 ### Changed
+- **Wordmark and OG typography** — Wordmark and OG brand text now use **Sora** (replacing Jockey One). Logo SVGs and OG images embed Sora woff2 for portability
 - Version bump for branding sync release
 
 ## [0.3.1] - 2026-03-01
 
 ### Changed
 - Logo typography: Jockey One replaces Space Grotesk for wordmark/titles
-- OG images: darker gradient (#4c1d95→#1e40af), centered vertical layout, opacity-stepped anvil tiers
+- OG images: darker gradient (#4c1d95->#1e40af), centered vertical layout, opacity-stepped anvil tiers
 - Fonts embedded as base64 @font-face in SVGs for social media crawler compatibility
 
 ### Added
@@ -37,13 +52,13 @@
 
 ### Changed
 
-- Package is no longer `private` — publishable to npm as `@forgespace/brand-guide`
+- Package is no longer `private` -- publishable to npm as `@forgespace/brand-guide`
 - `@forgespace/branding-mcp` moved to dependencies (required for type resolution)
 
 ## [0.2.0] - 2026-03-01
 
 ### Changed
-- **Rebrand: Siza → Forge Space** — site now represents the parent organization
+- **Rebrand: Siza -> Forge Space** -- site now represents the parent organization
   - Brand name, tagline ("The developer tools ecosystem."), color name ("Forge Purple")
   - All 10 pages updated with Forge Space identity
 - Stacked two-line wordmark (FORGE / SPACE) with Outfit 700, 20px, 0.12em letter-spacing

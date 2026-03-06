@@ -22,7 +22,7 @@ import identity from "../../brand/identity.json";
           {[
             "Use primary purple for CTAs and primary actions",
             "Use secondary blue for supporting elements and links",
-            "Use accent magenta sparingly for highlights and badges",
+            "Use accent (lavender) sparingly for highlights and badges",
             "Use neutrals for backgrounds and body text",
             "Maintain WCAG AA contrast ratios for all text",
           ].map((rule) => (
@@ -59,12 +59,12 @@ import identity from "../../brand/identity.json";
     <div class="bg-white/5 rounded-xl p-6 border border-white/5">
       <div class="space-y-6">
         {[
-          { level: "H1", font: "Space Grotesk", weight: "Bold (700)", size: "text-4xl / text-5xl", use: "Page titles only. One per page." },
-          { level: "H2", font: "Space Grotesk", weight: "Semibold (600)", size: "text-2xl / text-3xl", use: "Section headings. Primary content divisions." },
-          { level: "H3", font: "Space Grotesk", weight: "Semibold (600)", size: "text-xl", use: "Subsection headings. Card titles." },
-          { level: "Body", font: "IBM Plex Sans", weight: "Regular (400)", size: "text-base", use: "Default body text. Paragraphs, descriptions." },
-          { level: "Small", font: "IBM Plex Sans", weight: "Regular (400)", size: "text-sm", use: "Secondary text, captions, metadata." },
-          { level: "Code", font: "IBM Plex Mono", weight: "Regular (400)", size: "text-sm", use: "Code snippets, technical values, tokens." },
+          { level: "H1", font: identity.typography.headingFont, weight: "Bold (700)", size: "text-4xl / text-5xl", use: "Page titles only. One per page." },
+          { level: "H2", font: identity.typography.headingFont, weight: "Semibold (600)", size: "text-2xl / text-3xl", use: "Section headings. Primary content divisions." },
+          { level: "H3", font: identity.typography.headingFont, weight: "Semibold (600)", size: "text-xl", use: "Subsection headings. Card titles." },
+          { level: "Body", font: identity.typography.bodyFont, weight: "Regular (400)", size: "text-base", use: "Default body text. Paragraphs, descriptions." },
+          { level: "Small", font: identity.typography.bodyFont, weight: "Regular (400)", size: "text-sm", use: "Secondary text, captions, metadata." },
+          { level: "Code", font: identity.typography.monoFont, weight: "Regular (400)", size: "text-sm", use: "Code snippets, technical values, tokens." },
         ].map(({ level, font, weight, size, use }) => (
           <div class="flex items-start gap-6 border-b border-white/5 pb-4 last:border-0 last:pb-0">
             <div class="w-16 shrink-0">
@@ -146,15 +146,15 @@ import identity from "../../brand/identity.json";
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-text-secondary">
           <div>
             <span class="text-text-muted block mb-1">Headings</span>
-            <span class="font-heading font-bold text-text-primary">Space Grotesk</span>
+            <span class="font-heading font-bold text-text-primary">{identity.typography.headingFont}</span>
           </div>
           <div>
             <span class="text-text-muted block mb-1">Body</span>
-            <span style="font-family: 'IBM Plex Sans', sans-serif" class="text-text-primary">IBM Plex Sans</span>
+            <span style={`font-family: '${identity.typography.bodyFont}', sans-serif`} class="text-text-primary">{identity.typography.bodyFont}</span>
           </div>
           <div>
             <span class="text-text-muted block mb-1">Mono</span>
-            <code class="text-text-primary">IBM Plex Mono</code>
+            <code class="text-text-primary">{identity.typography.monoFont}</code>
           </div>
         </div>
       </div>
@@ -208,7 +208,7 @@ import identity from "../../brand/identity.json";
     <h2 class="font-heading text-2xl font-bold mb-6">Repository Branding</h2>
     <p class="text-sm text-text-secondary mb-6">
       Every Forge Space repository must use the standardized README header.
-      The wordmark is hosted on the brand guide CDN.
+      The wordmark is hosted on the brand guide CDN. Use SVG for web; use PNG or WEBP where raster is needed (e.g. social previews, app icons).
     </p>
     <div class="bg-white/5 rounded-xl p-6 border border-white/5 mb-4">
       <h3 class="text-xs text-text-muted uppercase tracking-wider mb-3">Standard Header</h3>
@@ -225,7 +225,7 @@ import identity from "../../brand/identity.json";
         <h3 class="text-xs text-green-400 uppercase tracking-wider mb-3">Do</h3>
         <div class="space-y-2">
           {[
-            "Use the CDN-hosted wordmark SVG (brand.forgespace.co)",
+            "Use the CDN-hosted wordmark (brand.forgespace.co) — SVG, PNG, or WEBP",
             "Set height=\"48\" for consistent sizing across repos",
             "Link the logo to forgespace.co",
             "Center-align the header block",
@@ -259,10 +259,13 @@ import identity from "../../brand/identity.json";
   <!-- Logo usage contexts -->
   <section class="mb-16">
     <h2 class="font-heading text-2xl font-bold mb-6">Logo Variant Selection</h2>
+    <p class="text-sm text-text-muted mb-4">
+      Prefer SVG for web; use PNG or WEBP for social previews and app icons.
+    </p>
     <div class="bg-white/5 rounded-xl p-6 border border-white/5">
       <div class="space-y-4 text-sm">
         {[
-          { variant: "Wordmark (Flame Rise)", context: "READMEs, marketing, documentation headers, social media banners", primary: true },
+          { variant: "Wordmark (Modern Horn)", context: "READMEs, marketing, documentation headers, social media banners. See /explore for the canonical reference.", primary: true },
           { variant: "Wordmark (Blue Tint)", context: "Monochrome blue contexts, blue-themed UIs, secondary print" },
           { variant: "Wordmark (Purple Tint)", context: "Light backgrounds, documentation, slides, print media" },
           { variant: "Wordmark (White)", context: "Dark overlays, gradient backgrounds, video, reversed contexts" },
@@ -278,6 +281,46 @@ import identity from "../../brand/identity.json";
             <p class="text-xs text-text-secondary">{context}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo do's and don'ts -->
+  <section class="mb-16">
+    <h2 class="font-heading text-2xl font-bold mb-6">Logo Do's and Don'ts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-xs text-green-400 uppercase tracking-wider mb-4">Do</h3>
+        <div class="space-y-2">
+          {[
+            "Use the wordmark as the primary logo; use the icon for favicons and compact spaces",
+            "Maintain clear space equal to 25% of the logo height on all sides",
+            "Use the white wordmark on dark or gradient backgrounds",
+            "Use tinted variants (blue, purple) when full-color mark is not appropriate",
+          ].map((rule) => (
+            <div class="flex items-start gap-2 bg-green-500/5 border border-green-500/10 rounded-lg p-3">
+              <span class="text-green-400 text-xs mt-0.5">✓</span>
+              <p class="text-xs text-text-secondary">{rule}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="text-xs text-red-400 uppercase tracking-wider mb-4">Don't</h3>
+        <div class="space-y-2">
+          {[
+            "Stretch or distort the logo",
+            "Add drop shadows or effects",
+            "Change the logo colors",
+            "Place on busy backgrounds or use below 24px height",
+            "Use the icon or monogram as the README header (use the wordmark)",
+          ].map((rule) => (
+            <div class="flex items-start gap-2 bg-red-500/5 border border-red-500/10 rounded-lg p-3">
+              <span class="text-red-400 text-xs mt-0.5">✕</span>
+              <p class="text-xs text-text-secondary">{rule}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

@@ -14,7 +14,7 @@
 
 - **Logo** — 3-tier notch anvil (Flame Rise) with 7 variants: wordmark, monogram, icon, abstract, + 3 tint wordmarks
 - **Colors** — Forge Purple (#7C3AED), Forge Blue (#3B82F6), Forge Amber (#F59E0B), neutrals, semantic (WCAG validated)
-- **Typography** — Space Grotesk / IBM Plex Sans / IBM Plex Mono with major-third type scale (sub-brand stacks for Siza and MCP-Gateway)
+- **Typography** — Sora / DM Sans / IBM Plex Mono with major-third type scale (sub-brand stacks for Siza and MCP-Gateway)
 - **Design Tokens** — CSS, JSON (W3C), Tailwind, Sass, React theme exports
 - **Spacing, Shadows, Borders, Motion, Gradients** — Full token coverage
 
@@ -57,6 +57,8 @@ npm install
 npm run dev
 ```
 
+To regenerate brand assets (logos, identity, tokens): ensure `src/fonts/sora.woff2` (Sora) and `src/fonts/dm-sans.woff2` (DM Sans) exist—both available from [Google Fonts](https://fonts.google.com)—then run `npm run generate` and `npm run export:raster`. OG images embed both fonts when present.
+
 ## Design Tokens
 
 Download tokens in your preferred format from the live site, or find them in `public/downloads/`:
@@ -64,6 +66,7 @@ Download tokens in your preferred format from the live site, or find them in `pu
 | Format | File |
 |--------|------|
 | CSS Custom Properties | `tokens.css` |
+| Siza Sub-brand CSS | `siza-tokens.css` |
 | W3C Design Tokens | `tokens.json` |
 | Tailwind Preset | `tailwind-preset.js` |
 | Sass Variables | `tokens.scss` |

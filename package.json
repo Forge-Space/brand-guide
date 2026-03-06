@@ -1,6 +1,6 @@
 {
   "name": "@forgespace/brand-guide",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Forge Space brand identity — types, tokens, and theme constants for cross-project consumption",
   "type": "module",
   "main": "./dist-lib/index.js",
@@ -10,7 +10,9 @@
       "import": "./dist-lib/index.js",
       "types": "./dist-lib/index.d.ts"
     },
-    "./identity": "./brand/identity.json"
+    "./identity": "./brand/identity.json",
+    "./siza-tokens.css": "./public/downloads/siza-tokens.css",
+    "./forge-tokens.css": "./public/downloads/forge-tokens.css"
   },
   "files": [
     "dist-lib",

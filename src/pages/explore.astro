@@ -1,19 +1,22 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import identity from "../../brand/identity.json";
 
-// ── Selected Direction ─────────────────────────────────────────
-const palette = { amber: "#A78BFA", blue: "#8B5CF6", purple: "#6D28D9" };
-const gradient = "linear-gradient(135deg, #6D28D9, #8B5CF6)";
+// ── From brand guide identity (single source of truth) ──────────
+const palette = identity.brandDirection?.palette ?? { amber: "#A78BFA", blue: "#8B5CF6", purple: "#6D28D9" };
+const gradient = identity.brandDirection?.gradientCss ?? identity.gradients?.presets?.hero?.cssValue ?? "linear-gradient(135deg, #6D28D9, #8B5CF6)";
+const tagline = identity.tagline ?? "The developer tools ecosystem.";
+const heroHeadline = identity.heroHeadline ?? "Build better, ship faster.";
+const headingFont = identity.typography?.headingFont ?? "Sora";
+const bodyFont = identity.typography?.bodyFont ?? "DM Sans";
 
-// Modern Horn — the chosen icon
-const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+const icon = identity.logo?.icon ?? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <path d="M4 20 L18 14 H56 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H18 L4 24 V20Z" fill="${palette.amber}"/>
   <rect x="20" y="32" width="30" height="10" rx="3" fill="${palette.blue}"/>
   <rect x="14" y="48" width="40" height="14" rx="4" fill="${palette.purple}"/>
   <rect x="44" y="16" width="5" height="5" rx="1.5" fill="${palette.amber}" opacity="0.4"/>
 </svg>`;
 
-// White variant for gradient/dark overlays
 const iconWhite = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <path d="M4 20 L18 14 H56 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H18 L4 24 V20Z" fill="white" opacity="0.7"/>
   <rect x="20" y="32" width="30" height="10" rx="3" fill="white" opacity="0.85"/>
@@ -21,10 +24,9 @@ const iconWhite = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" f
   <rect x="44" y="16" width="5" height="5" rx="1.5" fill="white" opacity="0.3"/>
 </svg>`;
 
-// Purple tint variant (single hue, dark to light)
 const iconPurpleTint = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <path d="M4 20 L18 14 H56 a3 3 0 0 1 3 3 v6 a3 3 0 0 1-3 3 H18 L4 24 V20Z" fill="#C4B5FD"/>
-  <rect x="20" y="32" width="30" height="10" rx="3" fill="#8B5CF6"/>
+  <rect x="20" y="32" width="30" height="10" rx="3" fill="${palette.blue}"/>
   <rect x="14" y="48" width="40" height="14" rx="4" fill="#5B21B6"/>
   <rect x="44" y="16" width="5" height="5" rx="1.5" fill="#C4B5FD" opacity="0.4"/>
 </svg>`;
@@ -36,16 +38,20 @@ const backgrounds = [
   { name: "Surface", classes: "bg-surface-2", label: "text-white/40" },
   { name: "White", classes: "bg-white", label: "text-black/40" },
   { name: "Black", classes: "bg-black", label: "text-white/30" },
-  { name: "Brand", classes: "", style: "background: #6D28D9", label: "text-white/50" },
+  { name: "Brand", classes: "", style: `background: ${palette.purple}`, label: "text-white/50" },
   { name: "Gradient", classes: "", style: gradient, label: "text-white/50" },
 ];
 
-// ── Siza — Sz + Cyan Spark (LOCKED) ────────────────────────────
-const sc = "#7C3AED";
-const cyan = "#06B6D4";
+// ── Siza (from identity.subBrands.siza) ─────────────────────────
+const siza = identity.subBrands?.siza ?? {};
+const sc = siza.primaryColor ?? "#8B5CF6";
+const cyan = siza.accentColor ?? "#06B6D4";
+const sizaTagline = siza.tagline ?? "AI-powered code generation";
+const sizaHeadingFont = siza.headingFont ?? "Plus Jakarta Sans";
+const sizaBodyFont = siza.bodyFont ?? "DM Sans";
 
 const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <text x="3" y="48" font-family="'Sora', sans-serif" font-weight="700" font-size="42" fill="${sc}" letter-spacing="-3">Sz</text>
+  <text x="3" y="48" font-family="'${sizaHeadingFont.replace(/"/g, "'")}', sans-serif" font-weight="700" font-size="42" fill="${sc}" letter-spacing="-3">Sz</text>
   <path d="M56 38 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5-4 -4-1.5 4-1.5z" fill="${cyan}"/>
 </svg>`;
 ---
@@ -58,7 +64,7 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
     </div>
     <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4">Modern Horn — Monochrome</h1>
     <p class="text-text-secondary max-w-2xl text-lg">
-      Modern Horn icon + monochrome purple palette + Sora / DM Sans typography.
+      {identity.brandDirection?.description ?? "Modern Horn icon + monochrome purple palette + Sora / DM Sans typography."}
       Refining the chosen direction and exploring Siza sub-brand marks.
     </p>
   </header>
@@ -71,20 +77,20 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
       <!-- Dark card -->
       <div class="bg-surface-2 rounded-2xl border border-white/5 p-10 flex flex-col items-center justify-center">
         <div class="w-24 h-24 mb-6" set:html={icon} />
-        <div style="font-family: 'Sora', sans-serif" class="text-2xl font-bold tracking-tight">FORGE SPACE</div>
-        <div style="font-family: 'DM Sans', sans-serif" class="text-xs text-text-secondary mt-1">The developer tools ecosystem.</div>
+        <div style={`font-family: '${headingFont}', sans-serif`} class="text-2xl font-bold tracking-tight">FORGE SPACE</div>
+        <div style={`font-family: '${bodyFont}', sans-serif`} class="text-xs text-text-secondary mt-1">{tagline}</div>
       </div>
       <!-- Light card -->
       <div class="bg-white rounded-2xl p-10 flex flex-col items-center justify-center">
         <div class="w-24 h-24 mb-6" set:html={icon} />
-        <div style="font-family: 'Sora', sans-serif" class="text-2xl font-bold tracking-tight text-gray-900">FORGE SPACE</div>
-        <div style="font-family: 'DM Sans', sans-serif" class="text-xs text-gray-500 mt-1">The developer tools ecosystem.</div>
+        <div style={`font-family: '${headingFont}', sans-serif`} class="text-2xl font-bold tracking-tight text-gray-900">FORGE SPACE</div>
+        <div style={`font-family: '${bodyFont}', sans-serif`} class="text-xs text-gray-500 mt-1">{tagline}</div>
       </div>
       <!-- Gradient card -->
       <div class="rounded-2xl p-10 flex flex-col items-center justify-center" style={gradient}>
         <div class="w-24 h-24 mb-6" set:html={iconWhite} />
-        <div style="font-family: 'Sora', sans-serif" class="text-2xl font-bold tracking-tight text-white">FORGE SPACE</div>
-        <div style="font-family: 'DM Sans', sans-serif" class="text-xs text-white/70 mt-1">The developer tools ecosystem.</div>
+        <div style={`font-family: '${headingFont}', sans-serif`} class="text-2xl font-bold tracking-tight text-white">FORGE SPACE</div>
+        <div style={`font-family: '${bodyFont}', sans-serif`} class="text-xs text-white/70 mt-1">{tagline}</div>
       </div>
     </div>
 
@@ -103,7 +109,7 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
         <span>{palette.purple}</span>
       </div>
       <span class="text-white/10">|</span>
-      <span>H: Sora &middot; B: DM Sans</span>
+      <span>H: {headingFont} &middot; B: {bodyFont}</span>
     </div>
   </section>
 
@@ -197,7 +203,7 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
       <!-- Nav dark -->
       <div class="bg-surface-1 rounded-xl px-6 py-4 flex items-center gap-4 border border-white/5">
         <div class="w-8 h-8" set:html={icon} />
-        <span style="font-family: 'Sora', sans-serif" class="font-bold text-sm">Forge Space</span>
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm">Forge Space</span>
         <div class="flex-1" />
         <span class="text-xs text-text-muted">Dashboard</span>
         <span class="text-xs text-text-muted">Generate</span>
@@ -207,7 +213,7 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
       <!-- Nav light -->
       <div class="bg-white rounded-xl px-6 py-4 flex items-center gap-4">
         <div class="w-8 h-8" set:html={icon} />
-        <span style="font-family: 'Sora', sans-serif" class="font-bold text-sm text-gray-900">Forge Space</span>
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm text-gray-900">Forge Space</span>
         <div class="flex-1" />
         <span class="text-xs text-gray-500">Dashboard</span>
         <span class="text-xs text-gray-500">Generate</span>
@@ -217,15 +223,15 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
       <!-- Hero banner -->
       <div class="rounded-xl p-12 flex flex-col items-center justify-center text-center" style={gradient}>
         <div class="w-16 h-16 mb-4" set:html={iconWhite} />
-        <span style="font-family: 'Sora', sans-serif" class="font-bold text-2xl text-white">Forge Space</span>
-        <span style="font-family: 'DM Sans', sans-serif" class="text-sm text-white/70 mt-1">Build better, ship faster.</span>
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-2xl text-white">Forge Space</span>
+        <span style={`font-family: '${bodyFont}', sans-serif`} class="text-sm text-white/70 mt-1">{heroHeadline}</span>
       </div>
 
       <!-- Footer -->
       <div class="bg-black rounded-xl px-8 py-6 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-6 h-6" set:html={iconWhite} />
-          <span style="font-family: 'Sora', sans-serif" class="text-xs text-white/50 font-medium">Forge Space</span>
+          <span style={`font-family: '${headingFont}', sans-serif`} class="text-xs text-white/50 font-medium">Forge Space</span>
         </div>
         <span class="text-xs text-white/30 font-mono">2026</span>
       </div>
@@ -278,18 +284,18 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
       <div class="bg-surface-2 rounded-2xl border border-white/5 p-10 flex flex-col items-center justify-center">
         <div class="w-24 h-24 mb-4" set:html={sizaIcon} />
-        <div style="font-family: 'Plus Jakarta Sans', sans-serif" class="text-xl font-bold tracking-tight">Siza</div>
-        <div style="font-family: 'DM Sans', sans-serif" class="text-[11px] text-text-secondary mt-0.5">AI-powered code generation</div>
+        <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold tracking-tight">Siza</div>
+        <div style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-[11px] text-text-secondary mt-0.5">{sizaTagline}</div>
       </div>
       <div class="bg-white rounded-2xl p-10 flex flex-col items-center justify-center">
         <div class="w-24 h-24 mb-4" set:html={sizaIcon} />
-        <div style="font-family: 'Plus Jakarta Sans', sans-serif" class="text-xl font-bold tracking-tight text-gray-900">Siza</div>
-        <div style="font-family: 'DM Sans', sans-serif" class="text-[11px] text-gray-500 mt-0.5">AI-powered code generation</div>
+        <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold tracking-tight text-gray-900">Siza</div>
+        <div style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-[11px] text-gray-500 mt-0.5">{sizaTagline}</div>
       </div>
       <div class="rounded-2xl p-10 flex flex-col items-center justify-center" style={`background: ${sc}`}>
         <div class="w-24 h-24 mb-4 [&_text]:!fill-white" set:html={sizaIcon} />
-        <div style="font-family: 'Plus Jakarta Sans', sans-serif" class="text-xl font-bold tracking-tight text-white">Siza</div>
-        <div style="font-family: 'DM Sans', sans-serif" class="text-[11px] text-white/70 mt-0.5">AI-powered code generation</div>
+        <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-xl font-bold tracking-tight text-white">Siza</div>
+        <div style={`font-family: '${sizaBodyFont}', sans-serif`} class="text-[11px] text-white/70 mt-0.5">{sizaTagline}</div>
       </div>
     </div>
 
@@ -317,7 +323,7 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
         <span>{cyan} Cyan Spark</span>
       </div>
       <span class="text-white/10">|</span>
-      <span>H: Plus Jakarta Sans &middot; B: DM Sans &middot; M: IBM Plex Mono</span>
+      <span>H: {sizaHeadingFont} &middot; B: {sizaBodyFont} &middot; M: {siza.monoFont ?? "IBM Plex Mono"}</span>
     </div>
   </section>
 
@@ -331,10 +337,10 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
     <div class="space-y-4">
       <div class="bg-surface-1 rounded-xl px-6 py-3 flex items-center gap-4 border border-white/5">
         <div class="w-6 h-6 shrink-0" set:html={icon} />
-        <span style="font-family: 'Sora', sans-serif" class="font-bold text-sm">Forge Space</span>
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm">Forge Space</span>
         <span class="text-white/15">|</span>
         <div class="w-6 h-6 shrink-0" set:html={sizaIcon} />
-        <span style="font-family: 'Plus Jakarta Sans', sans-serif" class="font-semibold text-sm text-text-secondary">Siza</span>
+        <span style={`font-family: '${sizaHeadingFont}', sans-serif`} class="font-semibold text-sm text-text-secondary">Siza</span>
         <div class="flex-1" />
         <span class="text-xs text-text-muted">Dashboard</span>
         <span class="text-xs text-text-muted">Generate</span>
@@ -342,10 +348,10 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
 
       <div class="bg-white rounded-xl px-6 py-3 flex items-center gap-4">
         <div class="w-6 h-6 shrink-0" set:html={icon} />
-        <span style="font-family: 'Sora', sans-serif" class="font-bold text-sm text-gray-900">Forge Space</span>
+        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm text-gray-900">Forge Space</span>
         <span class="text-gray-200">|</span>
         <div class="w-6 h-6 shrink-0" set:html={sizaIcon} />
-        <span style="font-family: 'Plus Jakarta Sans', sans-serif" class="font-semibold text-sm text-gray-500">Siza</span>
+        <span style={`font-family: '${sizaHeadingFont}', sans-serif`} class="font-semibold text-sm text-gray-500">Siza</span>
         <div class="flex-1" />
         <span class="text-xs text-gray-400">Dashboard</span>
         <span class="text-xs text-gray-400">Generate</span>
@@ -355,12 +361,12 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
         <div class="flex items-center gap-6">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10" set:html={icon} />
-            <div style="font-family: 'Sora', sans-serif" class="text-lg font-bold tracking-tight">FORGE SPACE</div>
+            <div style={`font-family: '${headingFont}', sans-serif`} class="text-lg font-bold tracking-tight">FORGE SPACE</div>
           </div>
           <span class="text-white/10">|</span>
           <div class="flex items-center gap-3">
             <div class="w-8 h-8" set:html={sizaIcon} />
-            <div style="font-family: 'Plus Jakarta Sans', sans-serif" class="text-lg font-bold tracking-tight">Siza</div>
+            <div style={`font-family: '${sizaHeadingFont}', sans-serif`} class="text-lg font-bold tracking-tight">Siza</div>
           </div>
         </div>
       </div>
@@ -371,8 +377,8 @@ const sizaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fi
   <div class="bg-surface-2 rounded-xl border border-white/5 p-6 text-sm text-text-secondary">
     <p class="font-heading font-bold text-text-primary mb-2">Modern Horn — Exploration</p>
     <p class="text-xs mb-3">
-      Forge Space: <strong>Modern Horn + Monochrome + Sora/DM Sans</strong><br/>
-      Siza: <strong>Sz + Cyan Spark + Plus Jakarta Sans/DM Sans</strong>
+      Forge Space: <strong>{identity.brandDirection?.name ?? "Modern Horn"} + Monochrome + {headingFont}/{bodyFont}</strong><br/>
+      Siza: <strong>Sz + Cyan Spark + {sizaHeadingFont}/{sizaBodyFont}</strong>
     </p>
   </div>
 </BaseLayout>

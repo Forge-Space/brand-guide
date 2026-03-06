@@ -2,25 +2,25 @@ import type { CSSProperties } from 'react';
 
 export const theme = {
   "colors": {
-    "primary": "#7c3aed",
-    "secondary": "#3B82F6",
-    "accent": "#F59E0B",
+    "primary": "#8B5CF6",
+    "secondary": "#A78BFA",
+    "accent": "#6D28D9",
     "neutral-100": "#f2f2f3",
     "neutral-200": "#e5e4e7",
     "neutral-300": "#cbc9cf",
-    "neutral-400": "#98949e",
-    "neutral-500": "#65616b",
+    "neutral-400": "#97949e",
+    "neutral-500": "#64616b",
     "neutral-600": "#323036",
     "neutral-700": "#19181b",
-    "neutral-800": "#0d0c0d",
+    "neutral-800": "#0c0c0d",
     "success": "#22c35d",
     "warning": "#f59f0a",
     "error": "#ef4343",
     "info": "#368fe7"
   },
   "fonts": {
-    "heading": "'Space Grotesk', sans-serif",
-    "body": "'IBM Plex Sans', sans-serif",
+    "heading": "'Sora', sans-serif",
+    "body": "'DM Sans', sans-serif",
     "mono": "'IBM Plex Mono', monospace"
   },
   "fontSizes": {
@@ -65,11 +65,11 @@ export const theme = {
   },
   "shadows": {
     "none": "none",
-    "sm": "1px 1px 2px 0px rgba(47, 36, 66, 0.05)",
-    "md": "2px 2px 4px -1px rgba(47, 36, 66, 0.08)",
-    "lg": "4px 4px 8px -2px rgba(47, 36, 66, 0.1)",
-    "xl": "8px 8px 16px -4px rgba(47, 36, 66, 0.12)",
-    "2xl": "16px 16px 32px -8px rgba(47, 36, 66, 0.15)"
+    "sm": "1px 1px 2px 0px rgba(45, 36, 66, 0.05)",
+    "md": "2px 2px 4px -1px rgba(45, 36, 66, 0.08)",
+    "lg": "4px 4px 8px -2px rgba(45, 36, 66, 0.1)",
+    "xl": "8px 8px 16px -4px rgba(45, 36, 66, 0.12)",
+    "2xl": "16px 16px 32px -8px rgba(45, 36, 66, 0.15)"
   },
   "radii": {
     "none": "0px",
@@ -109,11 +109,11 @@ export const theme = {
     }
   },
   "gradients": {
-    "hero": "linear-gradient(315deg, #7c3aed 0%, #3B82F6 100%)",
-    "button": "linear-gradient(315deg, #F59E0B 0%, #7c3aed 100%)",
+    "hero": "linear-gradient(315deg, #8B5CF6 0%, #A78BFA 100%)",
+    "button": "linear-gradient(315deg, #6D28D9 0%, #8B5CF6 100%)",
     "card": "linear-gradient(315deg, #f2f2f3 0%, #cacace 100%)",
-    "text": "linear-gradient(315deg, #7c3aed 0%, #F59E0B 100%)",
-    "background": "linear-gradient(315deg, #f2f2f3 0%, #0d0c0d 100%)"
+    "text": "linear-gradient(315deg, #8B5CF6 0%, #6D28D9 100%)",
+    "background": "linear-gradient(315deg, #f2f2f3 0%, #0c0c0d 100%)"
   }
 } as const;
 

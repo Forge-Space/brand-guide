@@ -3,18 +3,18 @@ export default {
   "theme": {
     "extend": {
       "colors": {
-        "primary": "#7c3aed",
-        "secondary": "#3B82F6",
-        "accent": "#F59E0B",
+        "primary": "#8B5CF6",
+        "secondary": "#A78BFA",
+        "accent": "#6D28D9",
         "neutral": {
           "100": "#f2f2f3",
           "200": "#e5e4e7",
           "300": "#cbc9cf",
-          "400": "#98949e",
-          "500": "#65616b",
+          "400": "#97949e",
+          "500": "#64616b",
           "600": "#323036",
           "700": "#19181b",
-          "800": "#0d0c0d"
+          "800": "#0c0c0d"
         },
         "success": "#22c35d",
         "warning": "#f59f0a",
@@ -23,11 +23,11 @@ export default {
       },
       "fontFamily": {
         "heading": [
-          "Space Grotesk",
+          "Sora",
           "sans-serif"
         ],
         "body": [
-          "IBM Plex Sans",
+          "DM Sans",
           "sans-serif"
         ],
         "mono": [
@@ -111,11 +111,11 @@ export default {
       },
       "boxShadow": {
         "none": "none",
-        "sm": "1px 1px 2px 0px rgba(47, 36, 66, 0.05)",
-        "md": "2px 2px 4px -1px rgba(47, 36, 66, 0.08)",
-        "lg": "4px 4px 8px -2px rgba(47, 36, 66, 0.1)",
-        "xl": "8px 8px 16px -4px rgba(47, 36, 66, 0.12)",
-        "2xl": "16px 16px 32px -8px rgba(47, 36, 66, 0.15)"
+        "sm": "1px 1px 2px 0px rgba(45, 36, 66, 0.05)",
+        "md": "2px 2px 4px -1px rgba(45, 36, 66, 0.08)",
+        "lg": "4px 4px 8px -2px rgba(45, 36, 66, 0.1)",
+        "xl": "8px 8px 16px -4px rgba(45, 36, 66, 0.12)",
+        "2xl": "16px 16px 32px -8px rgba(45, 36, 66, 0.15)"
       },
       "borderRadius": {
         "none": "0px",
@@ -146,11 +146,11 @@ export default {
         "bounce": "cubic-bezier(0.2, 1.4, 0.4, 1)"
       },
       "backgroundImage": {
-        "hero": "linear-gradient(315deg, #7c3aed 0%, #3B82F6 100%)",
-        "button": "linear-gradient(315deg, #F59E0B 0%, #7c3aed 100%)",
+        "hero": "linear-gradient(315deg, #8B5CF6 0%, #A78BFA 100%)",
+        "button": "linear-gradient(315deg, #6D28D9 0%, #8B5CF6 100%)",
         "card": "linear-gradient(315deg, #f2f2f3 0%, #cacace 100%)",
-        "text": "linear-gradient(315deg, #7c3aed 0%, #F59E0B 100%)",
-        "background": "linear-gradient(315deg, #f2f2f3 0%, #0d0c0d 100%)"
+        "text": "linear-gradient(315deg, #8B5CF6 0%, #6D28D9 100%)",
+        "background": "linear-gradient(315deg, #f2f2f3 0%, #0c0c0d 100%)"
       }
     }
   }

@@ -1,0 +1,103 @@
+/**
+ * Generated from brand/identity.json (subBrands.siza)
+ * Do not edit manually. Run: npm run generate
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --siza-bg: #121214;
+  --siza-bg-elevated: #18181b;
+  --siza-surface: #1a1a1e;
+  --siza-surface-alt: #1e1e22;
+  --siza-border: #27272a;
+  --siza-border-hover: #3f3f46;
+  --siza-primary: #8B5CF6;
+  --siza-primary-rgb: 139, 92, 246;
+  --siza-primary-hover: #A78BFA;
+  --siza-primary-pressed: #6D28D9;
+  --siza-text: #fafafa;
+  --siza-text-muted: #a1a1aa;
+  --siza-text-subtle: #71717a;
+  --siza-accent: rgba(139, 92, 246, 0.12);
+  --siza-accent-foreground: #8B5CF6;
+  --siza-destructive: #ef4444;
+  --siza-success: #22c55e;
+  --siza-warning: #eab308;
+  --siza-input: #18181b;
+  --siza-ring: #8B5CF6;
+
+  --siza-font-display: "Sora", system-ui, sans-serif;
+  --siza-font-body: "DM Sans", system-ui, sans-serif;
+  --siza-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --siza-space-1: 4px;
+  --siza-space-2: 8px;
+  --siza-space-3: 12px;
+  --siza-space-4: 16px;
+  --siza-space-5: 20px;
+  --siza-space-6: 24px;
+  --siza-space-8: 32px;
+  --siza-space-10: 40px;
+  --siza-space-12: 48px;
+  --siza-space-16: 64px;
+
+  --siza-radius-sm: 8px;
+  --siza-radius-md: 10px;
+  --siza-radius-lg: 12px;
+  --siza-radius-xl: 16px;
+
+  --siza-glow-primary: 0 0 30px rgba(139, 92, 246, 0.3);
+  --siza-glow-primary-sm: 0 0 20px rgba(139, 92, 246, 0.25);
+  --siza-focus-ring: 0 0 0 3px rgba(139, 92, 246, 0.15), 0 0 20px rgba(139, 92, 246, 0.1);
+
+  --siza-duration-fast: 150ms;
+  --siza-duration-standard: 200ms;
+  --siza-duration-entrance: 400ms;
+  --siza-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.siza-tokens,
+.siza-tokens {
+  font-family: var(--siza-font-body);
+  color: var(--siza-text);
+  background-color: var(--siza-bg);
+}
+
+.siza-tokens h1,
+.siza-tokens h2,
+.siza-tokens h3,
+.siza-tokens h4,
+.siza-tokens h5,
+.siza-tokens h6 {
+  font-family: var(--siza-font-display);
+}
+
+.siza-tokens code,
+.siza-tokens pre,
+.siza-tokens [class*="font-mono"] {
+  font-family: var(--siza-font-mono);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.125em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}

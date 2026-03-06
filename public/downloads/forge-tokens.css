@@ -1,0 +1,85 @@
+/**
+ * Forge Space Design System — Canonical tokens
+ * Generated from brand/identity.json. Do not edit manually. Run: npm run generate
+ * Typography: Sora (display), DM Sans (body), IBM Plex Mono (mono)
+ * Colors: Modern Horn — Monochrome (#A78BFA, #8B5CF6, #6D28D9)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --forge-bg: #121214;
+  --forge-bg-elevated: #18181b;
+  --forge-surface: #1a1a1e;
+  --forge-surface-alt: #1e1e22;
+  --forge-border: #27272a;
+  --forge-border-hover: #3f3f46;
+  --forge-primary: #8B5CF6;
+  --forge-primary-rgb: 139, 92, 246;
+  --forge-primary-hover: #A78BFA;
+  --forge-primary-pressed: #6D28D9;
+  --forge-text: #fafafa;
+  --forge-text-muted: #a1a1aa;
+  --forge-text-subtle: #71717a;
+  --forge-accent: rgba(139, 92, 246, 0.12);
+  --forge-accent-foreground: #8B5CF6;
+  --forge-destructive: #ef4444;
+  --forge-success: #22c55e;
+  --forge-warning: #eab308;
+  --forge-input: #18181b;
+  --forge-ring: #8B5CF6;
+
+  --forge-font-display: "Sora", system-ui, sans-serif;
+  --forge-font-body: "DM Sans", system-ui, sans-serif;
+  --forge-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --forge-space-1: 4px;
+  --forge-space-2: 8px;
+  --forge-space-3: 12px;
+  --forge-space-4: 16px;
+  --forge-space-5: 20px;
+  --forge-space-6: 24px;
+  --forge-space-8: 32px;
+  --forge-space-10: 40px;
+  --forge-space-12: 48px;
+  --forge-space-16: 64px;
+
+  --forge-radius-sm: 8px;
+  --forge-radius-md: 10px;
+  --forge-radius-lg: 12px;
+  --forge-radius-xl: 16px;
+
+  --forge-glow-primary: 0 0 30px rgba(139, 92, 246, 0.3);
+  --forge-glow-primary-sm: 0 0 20px rgba(139, 92, 246, 0.25);
+  --forge-focus-ring: 0 0 0 3px rgba(139, 92, 246, 0.15), 0 0 20px rgba(139, 92, 246, 0.1);
+
+  --forge-duration-fast: 150ms;
+  --forge-duration-standard: 200ms;
+  --forge-duration-entrance: 400ms;
+  --forge-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --forge-gradient-hero: linear-gradient(315deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%);
+  --forge-gradient-button: linear-gradient(315deg, #6D28D9 0%, #8B5CF6 100%);
+}
+
+body.forge-tokens,
+.forge-tokens {
+  font-family: var(--forge-font-body);
+  color: var(--forge-text);
+  background-color: var(--forge-bg);
+}
+
+.forge-tokens h1,
+.forge-tokens h2,
+.forge-tokens h3,
+.forge-tokens h4,
+.forge-tokens h5,
+.forge-tokens h6 {
+  font-family: var(--forge-font-display);
+}
+
+.forge-tokens code,
+.forge-tokens pre,
+.forge-tokens [class*="font-mono"] {
+  font-family: var(--forge-font-mono);
+}

@@ -17,7 +17,16 @@ npm run dev          # Astro dev server
 npm run build        # Static build to dist/
 npm run preview      # Preview built site
 npm run check        # Astro type checking
+npx wrangler pages deploy dist/  # Deploy to Cloudflare Pages (brand.forgespace.co)
 ```
+
+## Token Generation
+
+```bash
+npm run generate     # node scripts/generate-brand.mjs
+```
+
+Runs after changes to `brand/identity.json`. Produces: `src/styles/tokens.css`, `public/downloads/siza-tokens.css`, `public/downloads/forge-tokens.css`, `../forge-space-design-system/css/tokens.css`, `tokens.json`, `tailwind-preset.js`, `tokens.scss`, `theme.ts`, logos, favicons, OG images.
 
 ## Conventions
 
@@ -28,7 +37,7 @@ npm run check        # Astro type checking
 - Astro components for static content, islands only for interactive features
 - Fonts: Space Grotesk (headings), IBM Plex Sans (body), IBM Plex Mono (mono)
 - Sub-brand fonts: Siza (Plus Jakarta Sans / DM Sans), MCP-Gateway (Instrument Sans / Source Sans 3)
-- Colors: primary #7c3aed (Forge Purple), secondary #3B82F6 (Forge Blue), accent #F59E0B (Forge Amber)
+- Colors: primary #8B5CF6 (Forge Purple), secondary #A78BFA (Forge Purple Light), accent #6D28D9 (Forge Purple Dark)
 
 ## Brand Hierarchy
 
