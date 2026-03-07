@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Library
+metadata:
+  name: brand-guide
+  description: Forge Space brand identity, design tokens, logo variants, and brand site
+  tags:
+    - astro
+    - npm
+    - design
+    - brand
+spec:
+  owner: forge-space
+  system: siza
+  lifecycle: production
