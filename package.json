@@ -27,7 +27,8 @@
     "build:lib": "tsc -p tsconfig.lib.json && cp brand/identity.json dist-lib/",
     "preview": "astro preview",
     "check": "astro check",
-    "prepublishOnly": "npm run generate && npm run build:lib"
+    "prepublishOnly": "npm run generate && npm run build:lib",
+    "prepare": "husky"
   },
   "keywords": [
     "forge-space",
@@ -51,10 +52,16 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.18.0",
+    "husky": "^9.1.7",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
