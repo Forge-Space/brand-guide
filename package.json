@@ -28,6 +28,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "prepublishOnly": "npm run generate && npm run build:lib",
+    "test": "vitest run",
     "prepare": "husky"
   },
   "keywords": [
@@ -59,7 +60,8 @@
     "husky": "^9.1.7",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   },
   "engines": {
     "node": ">=22"
