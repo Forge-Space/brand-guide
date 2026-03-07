@@ -12,14 +12,7 @@ jobs:
       deployments: write
 
     steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
+      - uses: Forge-Space/.github/.github/actions/setup-node@main
 
       - run: npm run build
 
