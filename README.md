@@ -59,6 +59,10 @@ npm run dev
 
 To regenerate brand assets (logos, identity, tokens): ensure `src/fonts/sora.woff2` (Sora) and `src/fonts/dm-sans.woff2` (DM Sans) exist—both available from [Google Fonts](https://fonts.google.com)—then run `npm run generate` and `npm run export:raster`. OG images embed both fonts when present.
 
+Security maintenance note: this project uses npm `overrides` to pin vulnerable transitive
+dependencies (for example `lodash` pulled by `yaml-language-server`) until upstream packages
+publish patched ranges.
+
 ## Design Tokens
 
 Download tokens in your preferred format from the live site, or find them in `public/downloads/`:
