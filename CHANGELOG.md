@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+- **Dependabot security update deadlock (lodash)** — Added npm `overrides` to force
+  `yaml-language-server` to use `lodash@4.17.23`, resolving the transitive vulnerability path
+  from `@astrojs/check` without waiting for upstream `volar-service-yaml` pin changes.
+
 ## [0.6.0] - 2026-03-06
 
 ### Added
