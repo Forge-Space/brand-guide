@@ -49,7 +49,7 @@
   },
   "homepage": "https://brand.forgespace.co",
   "dependencies": {
-    "@forgespace/branding-mcp": "^0.6.0"
+    "@forgespace/branding-mcp": "^0.7.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
