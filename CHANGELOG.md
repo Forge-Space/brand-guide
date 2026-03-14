@@ -3,6 +3,8 @@
 ## [Unreleased]
 
 ### Fixed
+- **Siza page mobile overflow** — Updated the Forge Space | Siza lockup examples on
+  `/siza/` to wrap cleanly on narrow viewports without clipping the trailing labels
 - **Dependabot security update deadlock (lodash)** — Added npm `overrides` to force
   `yaml-language-server` to use `lodash@4.17.23`, resolving the transitive vulnerability path
   from `@astrojs/check` without waiting for upstream `volar-service-yaml` pin changes.

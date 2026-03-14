@@ -24,6 +24,9 @@
 |---------|--------|------|
 | Siza | Active | TBD (inherits Forge Space tokens) |
 
+The `/siza/` pairing examples are responsive by design: the Forge Space + Siza lockups
+wrap safely on narrow viewports instead of relying on single-line desktop spacing.
+
 ## npm Package
 
 Install the brand identity as an npm package for programmatic access in other projects:

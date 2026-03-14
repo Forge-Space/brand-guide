@@ -109,25 +109,52 @@ const headingFont = identity.typography?.headingFont ?? "Sora";
       Parent and sub-brand paired. Use the Forge Space icon and wordmark first, then Siza when the product is in context.
     </p>
     <div class="space-y-4">
-      <div class="bg-surface-1 rounded-xl px-6 py-3 flex items-center gap-4 border border-white/5">
-        <img src="/logos/icon.svg" alt="" class="w-6 h-6 shrink-0" />
-        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm">Forge Space</span>
-        <span class="text-white/15">|</span>
-        <div class="w-6 h-6 shrink-0" set:html={sizaIcon} />
-        <span style={`font-family: '${sizaHeadingFont}', sans-serif`} class="font-semibold text-sm text-text-secondary">Siza</span>
-        <div class="flex-1" />
-        <span class="text-xs text-text-muted">Dashboard</span>
-        <span class="text-xs text-text-muted">Generate</span>
+      <div class="bg-surface-1 rounded-xl border border-white/5 px-6 py-3">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div class="flex min-w-0 items-center gap-4">
+            <img src="/logos/icon.svg" alt="" class="h-6 w-6 shrink-0" />
+            <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm">
+              Forge Space
+            </span>
+            <span class="text-white/15">|</span>
+            <div class="h-6 w-6 shrink-0" set:html={sizaIcon} />
+            <span
+              style={`font-family: '${sizaHeadingFont}', sans-serif`}
+              class="font-semibold text-sm text-text-secondary"
+            >
+              Siza
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-text-muted sm:ml-auto">
+            <span>Dashboard</span>
+            <span>Generate</span>
+          </div>
+        </div>
       </div>
-      <div class="bg-white rounded-xl px-6 py-3 flex items-center gap-4">
-        <img src="/logos/icon.svg" alt="" class="w-6 h-6 shrink-0" />
-        <span style={`font-family: '${headingFont}', sans-serif`} class="font-bold text-sm text-gray-900">Forge Space</span>
-        <span class="text-gray-200">|</span>
-        <div class="w-6 h-6 shrink-0" set:html={sizaIcon} />
-        <span style={`font-family: '${sizaHeadingFont}', sans-serif`} class="font-semibold text-sm text-gray-500">Siza</span>
-        <div class="flex-1" />
-        <span class="text-xs text-gray-400">Dashboard</span>
-        <span class="text-xs text-gray-400">Generate</span>
+      <div class="bg-white rounded-xl px-6 py-3">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div class="flex min-w-0 items-center gap-4">
+            <img src="/logos/icon.svg" alt="" class="h-6 w-6 shrink-0" />
+            <span
+              style={`font-family: '${headingFont}', sans-serif`}
+              class="font-bold text-sm text-gray-900"
+            >
+              Forge Space
+            </span>
+            <span class="text-gray-200">|</span>
+            <div class="h-6 w-6 shrink-0" set:html={sizaIcon} />
+            <span
+              style={`font-family: '${sizaHeadingFont}', sans-serif`}
+              class="font-semibold text-sm text-gray-500"
+            >
+              Siza
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 sm:ml-auto">
+            <span>Dashboard</span>
+            <span>Generate</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
