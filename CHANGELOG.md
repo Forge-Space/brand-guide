@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-04-04
+
 ### Fixed
 - **Siza page mobile overflow** — Updated the Forge Space | Siza lockup examples on
   `/siza/` to wrap cleanly on narrow viewports without clipping the trailing labels
