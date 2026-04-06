@@ -1,6 +1,6 @@
 {
   "name": "@forgespace/brand-guide",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Forge Space brand identity — types, tokens, and theme constants for cross-project consumption",
   "type": "module",
   "main": "./dist-lib/index.js",

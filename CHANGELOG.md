@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-04-06
+
+### Fixed
+- **npm publish authentication** — replaced custom composite `setup-node` action with `actions/setup-node@v6` directly in the publish workflow, fixing `ENEEDAUTH` error that prevented v0.6.0 and v0.6.1 from publishing to npm
+- TypeScript 6 peer dependency overrides for `@astrojs/check`, `@astrojs/language-server`, and `cosmiconfig-typescript-loader`
+- Dependency security updates
+
 ## [0.6.1] - 2026-04-04
 
 ### Fixed
