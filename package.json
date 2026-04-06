@@ -67,7 +67,16 @@
     "yaml-language-server": {
       "lodash": "4.17.23"
     },
-    "axios": ">=0.0.0 <0.30.4 || >0.30.4 <1.14.1 || >=1.14.2"
+    "axios": ">=0.0.0 <0.30.4 || >0.30.4 <1.14.1 || >=1.14.2",
+    "@astrojs/check": {
+      "typescript": "$typescript"
+    },
+    "@astrojs/language-server": {
+      "typescript": "$typescript"
+    },
+    "cosmiconfig-typescript-loader": {
+      "typescript": "$typescript"
+    }
   },
   "engines": {
     "node": ">=22"
