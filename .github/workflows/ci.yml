@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Forge-Space/.github/.github/actions/setup-node@main
+      - name: Build library (required by token-files.test.ts)
+        run: npm run build:lib
       - run: npm test
 
   api-check:
