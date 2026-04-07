@@ -5,3 +5,10 @@ dist-lib/
 .DS_Store
 *.log
 CLAUDE.md
+
+# API Extractor outputs
+# - etc/*.api.md is COMMITTED (baseline report, CI verifies)
+# - temp/ is transient (regenerated on every run)
+# - docs/api/ is generated via `npm run api:docs`, not committed
+temp/
+docs/api/
