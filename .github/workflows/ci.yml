@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Forge-Space/.github/.github/actions/setup-node@main
+      - run: npm run build:lib
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Forge-Space/.github/.github/actions/setup-node@main
+      - name: Build library (required by token-files.test.ts)
+        run: npm run build:lib
+      - run: npm test
+
+  api-check:
+    name: API Surface Check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: Forge-Space/.github/.github/actions/setup-node@main
+      - name: Build TypeScript declarations
+        run: npm run build:lib
+      - name: Verify API report is up to date
+        run: npm run api:check
+      - name: Upload diff on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: api-extractor-diff
+          path: |
+            etc/*.api.md
+            temp/*.api.md
